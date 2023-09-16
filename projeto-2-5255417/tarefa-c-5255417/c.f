@@ -19,8 +19,6 @@ c     define o nome do arquivo de saída
 c     //char(n)
 
 c     define as somas
-      somax1 = 0
-      somay1 = 0
       somar1 = 0
       somar2 = 0
 
@@ -56,10 +54,8 @@ c         define a direção do passo
         end do
 
         histo(ix,iy) = histo(ix,iy) + 1
-        somax1 = somax1 + ix-1000
-        somay1 = somay1 + iy-1000
 
-        s = somax1**2 + somay1**2
+        s = (ix-1000)**2 + (iy-1000)**2
         somar1 = somar1 + sqrt(s)
         somar2 = somar2 + s
 
@@ -92,10 +88,11 @@ c     fecha a unidade de memória
       close(1)
 
 c     define as médias
-      media1 = somar1/m
-      media2 = (somar2 - (somax1**2 + somay1**2) )/m
+      amedia1 = somar1/m
+      amedia2 = (somar2- somar1**2)/m
 
-      write(*,*) "A média do raio é:",media1,"e o laplaciano é:",media2
-
+      write(*,*) "A média do raio é:",amedia1
+      write(*,*) "e o laplaciano é:",amedia2
+      
       end program
 
