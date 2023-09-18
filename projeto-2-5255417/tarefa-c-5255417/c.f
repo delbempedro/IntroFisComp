@@ -24,12 +24,14 @@ c     define o número de passos
       read(*,*) n
 
 c     define o nome do arquivo de saída
-      name = 'histograma1'
-c     //char(n)
+      name = 'histograma'
 
 c     define as somas
       somar1 = 0
       somar2 = 0
+
+c     aloca a memória para salvar os dados do histograma
+      open(unit=1,file=name)
 
 c     define o loop dos andarilhos
       do i=1,m
@@ -63,33 +65,11 @@ c         define a direção do passo
         end do
 
         ihisto(ix,iy) = ihisto(ix,iy) + 1
-        write(*,*) ihisto(ix,iy),ix,iy
+        write(1,*) ix,iy
 
         s = (ix-1000)**2 + (iy-1000)**2
         somar1 = somar1 + sqrt(s)
         somar2 = somar2 + s
-
-      end do
-
-c     faz o tratamento dos dados (transforma em inteiro)
-      do i=1,2000
-      
-        do j=1,2000
-          
-          ihisto(i,j) = int(ihisto(i,j))
-
-        end do
-
-      end do
-
-c     aloca a memória para salvar os dados do histograma
-      open(unit=1,file=name)
-
-c     inicia o loop para salvar as informações no histograma
-      write(1,*) 'x X y'
-      do i=1,2000
-        
-        write(1,*) ihisto(i,:)
 
       end do
 
