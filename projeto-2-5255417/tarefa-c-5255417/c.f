@@ -2,7 +2,16 @@
 
 c     cria io nome do arquivo de saída e os vetores que armazenarão a posição dos andarilhos
       character name*20
-      dimension histo(2000,2000)
+      dimension ihisto(2000,2000)
+
+c     limpa o vetor que armazena a posição dos andarilhos
+      do i=1, 2000
+        do j=1,2000
+
+          ihisto(i,j) = 0
+      
+        end do
+      end do
 
 c     define o número de andarilhos
       m = 1000
@@ -53,7 +62,8 @@ c         define a direção do passo
 
         end do
 
-        histo(ix,iy) = histo(ix,iy) + 1
+        ihisto(ix,iy) = ihisto(ix,iy) + 1
+        write(*,*) ihisto(ix,iy),ix,iy
 
         s = (ix-1000)**2 + (iy-1000)**2
         somar1 = somar1 + sqrt(s)
@@ -63,11 +73,10 @@ c         define a direção do passo
 
 c     faz o tratamento dos dados (transforma em inteiro)
       do i=1,2000
-        
+      
         do j=1,2000
           
-          k = histo(i,j)
-          histo(i,j) = k
+          ihisto(i,j) = int(ihisto(i,j))
 
         end do
 
@@ -80,7 +89,7 @@ c     inicia o loop para salvar as informações no histograma
       write(1,*) 'x X y'
       do i=1,2000
         
-        write(1,*) histo(i,:)
+        write(1,*) ihisto(i,:)
 
       end do
 
@@ -92,7 +101,7 @@ c     define as médias
       amedia2 = (somar2- somar1**2)/m
 
       write(*,*) "A média do raio é:",amedia1
-      write(*,*) "e o laplaciano é:",amedia2
+      write(*,*) "e o delta ao quadrado é:",amedia2
       
       end program
 

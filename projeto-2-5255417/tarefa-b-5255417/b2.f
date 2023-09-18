@@ -2,10 +2,17 @@
 
 c     cria io nome do arquivo de saída e o vetor que armazenaŕa a posição dos andarilhos
       character name*15
-      dimension histo(2000)
+      dimension ihisto(2000)
+
+c     limpa o vetor que armazena a posição dos andarilhos
+      do i=1, 2000
+
+        ihisto(i) = 0
+
+      end do
 
 c     define o número de andarilhos
-      m = 1000
+      m = 500000
       
 c     define as probabilidades      
       write(*,*) "Qual é o valor de  desejado, onde p = 1/x?"
@@ -49,7 +56,7 @@ c         define a direção do passo
 
         end do
 
-        histo(ix) = histo(ix) + 1
+        ihisto(ix) = ihisto(ix) + 1
         soma1 = soma1 + ix-1000
         soma2 = soma2 + (ix-1000)**2
 
@@ -59,9 +66,9 @@ c     aloca a memória para salvar os dados do histograma
       open(unit=1,file=name)
 
 c     inicia o loop para salvar as informações no histograma
-      do i=0,2000
+      do i=1,2000
         
-        j = histo(i)
+        j = ihisto(i)
         write(1,*) i-1000,j 
 
       end do
@@ -70,9 +77,9 @@ c     fecha a unidade de memória
       close(1)
 
 c     define as médias
-      media1 = soma1/m
-      media2 = soma2/m
+      amedia1 = soma1/m
+      amedia2 = soma2/m
 
-      write(*,*) "As médias de potência 1 e 2 são:",media1,media2
+      write(*,*) "As médias de potência 1 e 2 são:",amedia1,amedia2
 
       end program
