@@ -2,7 +2,7 @@
 
 c     cria os vetores que armazenarão a posição e passos dos andarilhos
 c     e a variável que define o nome do arquivo de saída
-      dimension ihisto(-1000:1000), ipx(0:10)
+      dimension ihisto(-1000:1000), ipx(0:10000)
       character*30 name
 
 c     limpa o vetor que armazena a posição dos andarilhos
@@ -32,24 +32,21 @@ c     define as somas
 
 c     define os passos possíveis
       ipx(0) = 1
-      ipx(1:10) = -1
-      um = 0
+      ipx(1:10000) = -1
+
 c     define o loop dos andarilhos
       do i=1,m
 
 c       define a posição do andarilho
-        ix = 1000
+        ix = 0
 c       define o loop de cada andarilho
         do j=1,n
-        
+
 c         faz a divisão inteira de i por ap
           int = rand(0)/ap
       
 c         adiciona o passo de acordo com o valor retornado por ipx()
           ix = ix + ipx(int)
-          if (ipx(int).eq.-1) then
-      um = um + 1
-          end if
 
         end do
 
@@ -58,7 +55,7 @@ c         adiciona o passo de acordo com o valor retornado por ipx()
         soma2 = soma2 + (ix)**2
 
       end do
-      write(*,*)um,1000**2
+
 c     aloca a memória para salvar os dados do histograma
       open(unit=1,file=name)
 
