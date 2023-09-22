@@ -1,12 +1,13 @@
       program andarilho bebado 2d
 
-c     cria io nome do arquivo de saída e os vetores que armazenarão a posição dos andarilhos
-      character name*20
-      dimension ihisto(2000,2000)
+c     cria os vetores que armazenarão a posição e passos dos andarilhos
+c     e a variável que define o nome do arquivo de saída
+      dimension ihisto(-1000:1000,-1000:1000), ipx(0:4)
+      character*30 name
 
 c     limpa o vetor que armazena a posição dos andarilhos
-      do i=1, 2000
-        do j=1,2000
+      do i=-1000,1000
+        do j=-1000,1000
 
           ihisto(i,j) = 0
       
@@ -24,7 +25,7 @@ c     define o número de passos
       read(*,*) n
 
 c     define o nome do arquivo de saída
-      name = 'histograma'
+      name = 'histograma--5155417'
 
 c     define as somas
       somar1 = 0
@@ -37,8 +38,8 @@ c     define o loop dos andarilhos
       do i=1,m
 
 c       define a posição do andarilho
-        ix = 1000
-        iy = 1000
+        ix = 0
+        iy = 0
 c       define o loop de cada andarilho
         do j=1,n
                                                  
@@ -67,7 +68,7 @@ c         define a direção do passo
         ihisto(ix,iy) = ihisto(ix,iy) + 1
         write(1,*) ix,iy
 
-        s = (ix-1000)**2 + (iy-1000)**2
+        s = ix**2 + iy**2
         somar1 = somar1 + sqrt(s)
         somar2 = somar2 + s
 
@@ -78,7 +79,7 @@ c     fecha a unidade de memória
 
 c     define as médias
       amedia1 = somar1/m
-      amedia2 = (somar2- somar1**2)/m
+      amedia2 = (somar2 - somar1**2)/m
 
       write(*,*) "A média do raio é:",amedia1
       write(*,*) "e o delta ao quadrado é:",amedia2
