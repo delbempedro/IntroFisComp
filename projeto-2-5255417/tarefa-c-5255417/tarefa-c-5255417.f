@@ -2,7 +2,7 @@
 
 c     cria os vetores que armazenarão a posição e passos dos andarilhos
 c     e a variável que define o nome do arquivo de saída
-      dimension ihisto(-1000:1000,-1000:1000), ipx(0:4)
+      dimension ihisto(-1000:1000,-1000:1000), ipx(0:3)
       character*30 name
 
 c     limpa o vetor que armazena a posição dos andarilhos
@@ -25,11 +25,13 @@ c     define o número de passos
       read(*,*) n
 
 c     define o nome do arquivo de saída
-      name = 'histograma--5155417'
+      name = 'histograma--5255417'
 
 c     define as somas
       somar1 = 0
       somar2 = 0
+
+c     define os passos possíveis
 
 c     aloca a memória para salvar os dados do histograma
       open(unit=1,file=name)
@@ -40,28 +42,28 @@ c     define o loop dos andarilhos
 c       define a posição do andarilho
         ix = 0
         iy = 0
+c       define os passos possíveis
+        ipx(0) = 0
+        ipx(1) = 0
+        ipx(2) = 0
+        ipx(3) = 0
+
 c       define o loop de cada andarilho
         do j=1,n
-                                                 
+                                                
 c         define a direção do passo
           a = rand(0)
-          if(a.lt.ap) then
 
-            ix = ix+1
+c         faz a divisão inteira de i por ap
+          int = rand(0)/ap   
 
-          else if(a.lt.2.0e0*ap) then
+c         incrementa um passo na direção correspondente a "int"
+          ipx(int) = ipx(int) + 1
 
-            ix = ix-1
-
-          else if(a.lt.3.0e0*ap) then
-
-            iy = iy+1
-
-          else
-
-            iy = iy-1
-
-          end if
+c         define as coordenadas finais de acordo com quantos passos
+c         foram dados em cada direção
+          ix = ipx(0) - ipx(1)
+          iy = ipx(2) - ipx(3)
 
         end do
 
