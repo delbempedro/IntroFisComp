@@ -11,7 +11,7 @@ c     define as probabilidades
       ap = 0.250e0
     
 c     define o número de passos
-      nmax = 10e4
+      nmax = 10e3
     
 c     define o nome do arquivo de saída
       name = 'histograma-5255417'
@@ -30,8 +30,8 @@ c     escreve 0 no arquivo que define nas coordenadas x e y de cada partícula
       end do
 
 c     calcula a entropia a cada ordem 10 de passos
-      ipassos = 1
-      ipassosf = 10
+      ipassos = 0
+      ipassosf = 1
       do while(ipassosf.le.nmax)
 
 c     limpa o vetor que armazena a posição dos andarilhos
@@ -85,7 +85,7 @@ c       escreve em um arquivo a relação entropia X passos
 
 c       redefine as variáveis de iteração para continuar os passos de onde pararam
         ipassos = ipassosf
-        ipassosf = ipassos*10
+        ipassosf = ipassos + 5
 
       end do
 
@@ -100,9 +100,9 @@ c     fecha as unidades de memória
 
 c     inicia o loop percorrendo todo o "plano"
       i = -1000
-      do while(i.eq.1000)
+      do while(i.lt.1000)
         j = -1000
-        do while(j.eq.1000)
+        do while(j.lt.1000)
 
 c         define o número de partículas inicial do retículado como 0
           aparticulas = 0
