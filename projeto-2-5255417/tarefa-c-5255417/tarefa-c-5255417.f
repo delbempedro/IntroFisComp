@@ -4,6 +4,8 @@ c     cria os vetores que armazenarão a posição e passos dos andarilhos
 c     e a variável que define o nome do arquivo de saída
       dimension ihisto(-1000:1000,-1000:1000), ipx(0:3)
       character*30 name
+c     define "n" como inteiro*8 para poder receber valores maiores de passos
+      integer*8 n
 
 c     limpa o vetor que armazena a posição dos andarilhos
       ihisto(-1000:1000,-1000:1000) = 0
@@ -52,12 +54,12 @@ c         faz a divisão inteira de i por ap
 c         incrementa um passo na direção correspondente a "int"
           ipx(int) = ipx(int) + 1
 
-c         define as coordenadas finais de acordo com quantos passos
-c         foram dados em cada direção
-          ix = ipx(0) - ipx(1)
-          iy = ipx(2) - ipx(3)
-
         end do
+
+c       define as coordenadas finais de acordo com quantos passos
+c       foram dados em cada direção
+        ix = ipx(0) - ipx(1)
+        iy = ipx(2) - ipx(3)
 
         ihisto(ix,iy) = ihisto(ix,iy) + 1
         write(1,*) ix,iy
