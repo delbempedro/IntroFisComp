@@ -4,11 +4,7 @@ c     cria os vetores que armazenarão a posição e passos dos andarilhos
       dimension ihisto(-1000:1000), ipx(0:1)
       
 c     limpa o vetor que armazena a posição dos andarilhos
-      do i=-1000,1000
-      
-        ihisto(i) = 0
-      
-      end do
+        ihisto(-1000:1000) = 0
       
 c     define o número de andarilhos
       m = 500000

@@ -6,11 +6,7 @@ c     e a variável que define o nome do arquivo de saída
       character*30 name
 
 c     limpa o vetor que armazena a posição dos andarilhos
-      do i=-1000,1000
-
-        ihisto(i) = 0
-
-      end do
+      ihisto(-1000:1000) = 0
 
 c     define o número de andarilhos
       m = 500000
