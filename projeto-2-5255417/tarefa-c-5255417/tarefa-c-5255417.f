@@ -31,8 +31,6 @@ c     define as somas
       somar1 = 0
       somar2 = 0
 
-c     define os passos possíveis
-
 c     aloca a memória para salvar os dados do histograma
       open(unit=1,file=name)
 
