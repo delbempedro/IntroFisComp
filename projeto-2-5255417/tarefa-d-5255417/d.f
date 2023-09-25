@@ -4,15 +4,6 @@ c     cria do nome do arquivo de saída e os vetores que armazenarão a posiçã
       character name*20
       dimension ihisto(-1000:1000,-1000:1000), ipx(0:3)
     
-c     limpa o vetor que armazena a posição dos andarilhos
-      do i=-1000,1000
-        do j=-1000,1000
-    
-          ihisto(i,j) = 0
-          
-        end do
-      end do
-    
 c     define o número de andarilhos
       n = 1000
     
@@ -29,7 +20,7 @@ c     aloca a memória para salvar os dados do histograma
       open(unit=1,file=name)
 
 c     aloca memória para salvar os dados da entropia
-      open(unit=2, file='gŕafico-5255417')
+      open(unit=2, file='gráfico-5255417')
 
 c     escreve 0 no arquivo que define nas coordenadas x e y de cada partícula
       do k=1, n
@@ -42,6 +33,15 @@ c     calcula a entropia a cada ordem 10 de passos
       ipassos = 1
       ipassosf = 10
       do while(ipassosf.le.nmax)
+
+c     limpa o vetor que armazena a posição dos andarilhos
+        do i=-1000,1000
+          do j=-1000,1000
+          
+            ihisto(i,j) = 0
+                
+          end do
+        end do
 
 c     define o loop dos andarilhos
       do i=1,n
@@ -80,7 +80,8 @@ c         foram dados em cada direção
             end do
 
 c       escreve em um arquivo a relação entropia X passos
-        write(2,*) ipassosf, entropia(name)
+        an = n
+        write(2,*) ipassosf, entropia(ihisto,an)
 
 c       redefine as variáveis de iteração para continuar os passos de onde pararam
         ipassos = ipassosf
@@ -88,13 +89,53 @@ c       redefine as variáveis de iteração para continuar os passos de onde pa
 
       end do
 
-c     fecha a unidade de memória
+c     fecha as unidades de memória
       close(1)
+      close(2)
       
       end program
 
-      real function entropia(name)
+      function entropia(ihisto, an)
+      dimension ihisto(-1000:1000,-1000:1000)
 
-      open()
+c     inicia o loop percorrendo todo o "plano"
+      i = -1000
+      do while(i.eq.1000)
+        j = -1000
+        do while(j.eq.1000)
+
+c         define o número de partículas inicial do retículado como 0
+          aparticulas = 0
+
+c         percorre cada retículado contabilizando quantas partículas existem no mesmo
+          do k=i,i+10
+            do l=j,j+10
+
+c             soma à quantidade de a quantidade de partículas na posição (k,l)
+              aparticulas = aparticulas + ihisto(k,l)
+
+            end do
+          end do
+
+c         calcula a entropia devido a um retículado     
+          if(aparticulas.gt.0) then
+
+c             define a probabilidade das partículas estarem em
+c             um retículado fazendo a razão das que nele estão
+c             pelo total de partículas
+              aprobabilidade = aparticulas/an
+
+c             soma a probabilidade devido a um retículado
+              entropia = entropia - aprobabilidade*log(aprobabilidade)
+            
+          end if
+
+          j = j + 10
+
+        end do
+
+        i = i + 10
+
+      end do
 
       end function
