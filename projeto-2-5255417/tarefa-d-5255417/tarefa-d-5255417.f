@@ -12,19 +12,13 @@ c     define as probabilidades
     
 c     define o número de passos
       nmax = 1000
-    
-c     define o nome do arquivo de saída
-      name = 'histograma-5255417'
-    
-c     aloca a memória para salvar os dados do histograma
-      open(unit=1,file=name)
 
 c     aloca memória para salvar os dados da entropia
-      open(unit=2, file='gráfico-5255417')
+      open(unit=1, file='gráfico-5255417')
 
-c     calcula a entropia a cada ordem 10 de passos
+c     calcula a entropia a cada passo
       ipassos = 1
-      do while(ipassosf.le.nmax)
+      do while(ipassos.le.nmax)
 
 c       escreve 0 em todas as coordenadas do plano
         ihisto(-1000:1000,-1000:1000) = 0
@@ -62,13 +56,12 @@ c           foram dados em cada direção
             iy = ipx(2) - ipx(3) 
       
           ihisto(ix,iy) = ihisto(ix,iy) + 1
-          write(1,*) ix,iy
       
         end do
 
 c       escreve em um arquivo a relação entropia X passos
         an = n
-        write(2,*) ipassos, entropia(ihisto,an)
+        write(1,*) ipassos, entropia(ihisto,an)
 
 c       incrementa a quantidade de passos
         ipassos = ipassos + 1
@@ -76,7 +69,6 @@ c       incrementa a quantidade de passos
       end do
 
 c     fecha a unidade de memória
-      close(2)
       close(1)
       
       end program
