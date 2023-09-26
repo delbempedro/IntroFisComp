@@ -26,8 +26,8 @@ c     define o nome do arquivo de saída
 c     define as somas
       somax = 0
       somay = 0
-      somar1 = 0
-      somar2 = 0
+      somax2 = 0
+      somay2 = 0
 
 c     aloca a memória para salvar os dados do histograma
       open(unit=1,file=name)
@@ -69,8 +69,8 @@ c       foram dados em cada direção
         s = ix**2 + iy**2
         somax = somax + ix
         somay = somay + iy
-        somar1 = somar1 + sqrt(s)
-        somar2 = somar2 + s
+        somax2 = somax2 + ix**2
+        somay2 = somay2 + iy**2
 
       end do
 
@@ -78,10 +78,11 @@ c     fecha a unidade de memória
       close(1)
 
 c     define as médias
-      amedia1 = somar1/m
-      amedia2 = (somar2 - (somax**2+ somay**2) )/m
+      amediax = somax/m
+      amediay = somay/m
+      amedia2 = (somax2 + somay2 - (somax**2 + somay**2) )/m
 
-      write(*,*) "A média do raio é:",amedia1
+      write(*,*) "<r> = ",amediax,"i + ",amediay,"j"
       write(*,*) "e o delta ao quadrado é:",amedia2
       
       end program
