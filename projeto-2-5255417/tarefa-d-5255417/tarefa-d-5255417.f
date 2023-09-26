@@ -87,6 +87,9 @@ c     fecha a unidade de memória
 c     define o tamanho do retículado
       iret = 10
 
+c     inicia a variável entropia
+      entropia = 0
+
 c     inicia o loop percorrendo todo o "plano"
       i = -1000
       do while(i.lt.1000)
