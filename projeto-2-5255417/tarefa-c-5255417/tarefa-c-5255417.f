@@ -2,7 +2,7 @@
 
 c     cria os vetores que armazenarão a posição e passos dos andarilhos
 c     e a variável que define o nome do arquivo de saída
-      dimension ihisto(-1000:1000,-1000:1000), ipx(0:3)
+      dimension ihisto(-10000:10000,-10000:10000), ipx(0:3)
       character*30 name
 c     define "n" como inteiro*8 para poder receber valores maiores de passos
       integer*8 n
@@ -24,6 +24,8 @@ c     define o nome do arquivo de saída
       name = 'histograma--5255417'
 
 c     define as somas
+      somax = 0
+      somay = 0
       somar1 = 0
       somar2 = 0
 
@@ -65,6 +67,8 @@ c       foram dados em cada direção
         write(1,*) ix,iy
 
         s = ix**2 + iy**2
+        somax = somax + ix
+        somay = somay + iy
         somar1 = somar1 + sqrt(s)
         somar2 = somar2 + s
 
@@ -75,7 +79,7 @@ c     fecha a unidade de memória
 
 c     define as médias
       amedia1 = somar1/m
-      amedia2 = (somar2 - somar1**2)/m
+      amedia2 = (somar2 - (somax**2+ somay**2) )/m
 
       write(*,*) "A média do raio é:",amedia1
       write(*,*) "e o delta ao quadrado é:",amedia2

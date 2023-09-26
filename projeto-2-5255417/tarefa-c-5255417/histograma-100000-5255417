@@ -1,0 +1,1398 @@
+# Grace project file
+#
+@version 50125
+@page size 792, 612
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 8 to "Courier", "Courier"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 12 to "Symbol", "Symbol"
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (255, 0, 0), "red"
+@map color 3 to (0, 255, 0), "green"
+@map color 4 to (0, 0, 255), "blue"
+@map color 5 to (255, 255, 0), "yellow"
+@map color 6 to (188, 143, 143), "brown"
+@map color 7 to (220, 220, 220), "grey"
+@map color 8 to (148, 0, 211), "violet"
+@map color 9 to (0, 255, 255), "cyan"
+@map color 10 to (255, 0, 255), "magenta"
+@map color 11 to (255, 165, 0), "orange"
+@map color 12 to (114, 33, 188), "indigo"
+@map color 13 to (103, 7, 72), "maroon"
+@map color 14 to (64, 224, 208), "turquoise"
+@map color 15 to (0, 139, 0), "green4"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 1.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Mon Sep 25 20:23:12 2023"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world -1054.152, -1054.152, 1054.152, 1054.152
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.150000, 0.150000, 1.150000, 0.850000
+@    title ""
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle ""
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 1.0
+@    xaxis  label ""
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.000000
+@    xaxis  label font 0
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 1000
+@    xaxis  tick minor ticks 1
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 1.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 1.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.000000
+@    xaxis  ticklabel font 0
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 1.0
+@    yaxis  label ""
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.000000
+@    yaxis  label font 0
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 1000
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 1.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 1.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format general
+@    yaxis  ticklabel prec 5
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.000000
+@    yaxis  ticklabel font 0
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  on
+@    altxaxis  type zero false
+@    altxaxis  offset 0.000000 , 0.000000
+@    altxaxis  bar on
+@    altxaxis  bar color 1
+@    altxaxis  bar linestyle 1
+@    altxaxis  bar linewidth 1.0
+@    altxaxis  label ""
+@    altxaxis  label layout para
+@    altxaxis  label place auto
+@    altxaxis  label char size 1.000000
+@    altxaxis  label font 0
+@    altxaxis  label color 1
+@    altxaxis  label place normal
+@    altxaxis  tick on
+@    altxaxis  tick major 1000
+@    altxaxis  tick minor ticks 1
+@    altxaxis  tick default 6
+@    altxaxis  tick place rounded true
+@    altxaxis  tick in
+@    altxaxis  tick major size 1.000000
+@    altxaxis  tick major color 1
+@    altxaxis  tick major linewidth 1.0
+@    altxaxis  tick major linestyle 1
+@    altxaxis  tick major grid off
+@    altxaxis  tick minor color 1
+@    altxaxis  tick minor linewidth 1.0
+@    altxaxis  tick minor linestyle 1
+@    altxaxis  tick minor grid off
+@    altxaxis  tick minor size 0.500000
+@    altxaxis  ticklabel on
+@    altxaxis  ticklabel format general
+@    altxaxis  ticklabel prec 5
+@    altxaxis  ticklabel formula ""
+@    altxaxis  ticklabel append ""
+@    altxaxis  ticklabel prepend ""
+@    altxaxis  ticklabel angle 0
+@    altxaxis  ticklabel skip 0
+@    altxaxis  ticklabel stagger 0
+@    altxaxis  ticklabel place normal
+@    altxaxis  ticklabel offset auto
+@    altxaxis  ticklabel offset 0.000000 , 0.010000
+@    altxaxis  ticklabel start type auto
+@    altxaxis  ticklabel start 0.000000
+@    altxaxis  ticklabel stop type auto
+@    altxaxis  ticklabel stop 0.000000
+@    altxaxis  ticklabel char size 1.000000
+@    altxaxis  ticklabel font 0
+@    altxaxis  ticklabel color 1
+@    altxaxis  tick place both
+@    altxaxis  tick spec type none
+@    altyaxis  on
+@    altyaxis  type zero false
+@    altyaxis  offset 0.000000 , 0.000000
+@    altyaxis  bar on
+@    altyaxis  bar color 1
+@    altyaxis  bar linestyle 1
+@    altyaxis  bar linewidth 1.0
+@    altyaxis  label ""
+@    altyaxis  label layout para
+@    altyaxis  label place auto
+@    altyaxis  label char size 1.000000
+@    altyaxis  label font 0
+@    altyaxis  label color 1
+@    altyaxis  label place normal
+@    altyaxis  tick on
+@    altyaxis  tick major 1000
+@    altyaxis  tick minor ticks 1
+@    altyaxis  tick default 6
+@    altyaxis  tick place rounded true
+@    altyaxis  tick in
+@    altyaxis  tick major size 1.000000
+@    altyaxis  tick major color 1
+@    altyaxis  tick major linewidth 1.0
+@    altyaxis  tick major linestyle 1
+@    altyaxis  tick major grid off
+@    altyaxis  tick minor color 1
+@    altyaxis  tick minor linewidth 1.0
+@    altyaxis  tick minor linestyle 1
+@    altyaxis  tick minor grid off
+@    altyaxis  tick minor size 0.500000
+@    altyaxis  ticklabel on
+@    altyaxis  ticklabel format general
+@    altyaxis  ticklabel prec 5
+@    altyaxis  ticklabel formula ""
+@    altyaxis  ticklabel append ""
+@    altyaxis  ticklabel prepend ""
+@    altyaxis  ticklabel angle 0
+@    altyaxis  ticklabel skip 0
+@    altyaxis  ticklabel stagger 0
+@    altyaxis  ticklabel place normal
+@    altyaxis  ticklabel offset auto
+@    altyaxis  ticklabel offset 0.000000 , 0.010000
+@    altyaxis  ticklabel start type auto
+@    altyaxis  ticklabel start 0.000000
+@    altyaxis  ticklabel stop type auto
+@    altyaxis  ticklabel stop 0.000000
+@    altyaxis  ticklabel char size 1.000000
+@    altyaxis  ticklabel font 0
+@    altyaxis  ticklabel color 1
+@    altyaxis  tick place both
+@    altyaxis  tick spec type none
+@    legend on
+@    legend loctype view
+@    legend 0.85, 0.8
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 1.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 1.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 0
+@    frame background pattern 0
+@    s0 hidden false
+@    s0 type xy
+@    s0 symbol 9
+@    s0 symbol size 1.000000
+@    s0 symbol color 2
+@    s0 symbol pattern 1
+@    s0 symbol fill color 2
+@    s0 symbol fill pattern 0
+@    s0 symbol linewidth 1.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 0
+@    s0 line linestyle 1
+@    s0 line linewidth 1.0
+@    s0 line color 2
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 2
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 1.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 1.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "histograma-100000-5255417"
+@    s0 legend  ""
+@target G0.S0
+@type xy
+368 174
+98 -244
+-172 258
+66 -326
+-21 223
+134 -356
+-303 129
+-115 133
+-94 172
+-68 234
+-219 11
+-296 -116
+-272 414
+-98 -304
+-446 -370
+-213 169
+-446 234
+-111 -259
+396 -250
+709 149
+-89 135
+-103 -67
+389 -103
+-54 -26
+-100 -134
+-193 -139
+-251 -143
+99 -309
+-184 -528
+105 407
+73 17
+-252 -352
+500 54
+174 36
+-170 30
+384 -130
+230 236
+-47 91
+7 401
+163 135
+183 -7
+-23 -283
+41 99
+246 -164
+73 -125
+-225 -11
+157 -237
+-474 162
+-424 20
+39 309
+383 -277
+-21 -65
+-277 -127
+-126 -68
+-489 41
+-235 197
+325 91
+108 -120
+25 327
+-35 -59
+58 -300
+290 -24
+-11 -95
+-62 244
+-16 -258
+-175 -311
+248 -422
+19 189
+154 52
+-211 -119
+204 218
+264 -82
+246 384
+42 188
+-198 186
+-57 189
+-104 -122
+-108 262
+52 98
+-203 -95
+-54 418
+345 -363
+355 -71
+131 309
+-93 -29
+-134 -234
+228 -234
+240 -128
+-360 48
+-81 189
+270 6
+-153 111
+69 171
+-94 -54
+-113 -83
+113 149
+-21 95
+166 250
+131 -211
+-56 284
+278 -372
+349 117
+54 -170
+21 383
+372 68
+-104 -14
+-88 8
+-197 -11
+-51 -69
+-72 -214
+-427 -243
+-62 -36
+-25 -201
+189 199
+110 486
+65 -141
+28 68
+-218 216
+144 -314
+38 -148
+-193 -93
+3 -25
+-17 123
+-206 -216
+199 35
+156 320
+180 490
+128 -110
+-202 532
+197 -71
+266 466
+-12 -362
+56 -8
+-295 -23
+-341 11
+-217 -407
+192 -242
+-96 -436
+362 68
+139 -83
+11 -87
+-16 224
+-125 231
+-306 128
+231 17
+145 61
+-50 134
+306 -614
+389 -277
+324 16
+-267 325
+-154 -332
+235 291
+381 271
+-355 209
+-285 -239
+117 203
+-215 -255
+-424 314
+-479 -49
+202 -450
+-430 54
+-47 97
+-279 167
+252 12
+-101 -353
+-127 69
+132 -2
+106 -336
+-492 168
+-75 -43
+-87 231
+-266 -174
+286 78
+-133 -75
+126 -556
+28 -244
+-183 -237
+-327 389
+243 247
+4 86
+163 187
+251 227
+344 4
+63 35
+82 -34
+263 277
+-261 -43
+-106 -98
+223 -65
+-3 -259
+102 -28
+-96 422
+66 -280
+269 -3
+-36 -198
+188 -64
+359 -37
+71 65
+29 -215
+21 113
+24 186
+23 369
+-94 -20
+-161 -89
+-140 56
+21 275
+120 -172
+276 280
+-313 -303
+-486 -226
+-334 230
+443 -255
+430 -80
+45 -237
+30 170
+223 -279
+39 -319
+123 309
+-327 -151
+-545 31
+-174 -182
+-53 223
+495 143
+133 77
+-259 -151
+-221 69
+-99 -209
+-43 -173
+176 18
+-374 134
+-211 37
+72 -202
+114 -6
+111 -641
+-537 -257
+-8 414
+309 157
+-116 -26
+68 -66
+-45 -123
+-18 70
+-247 99
+270 372
+-136 -182
+-42 -4
+7 21
+-442 476
+260 -86
+-167 -371
+125 185
+46 -230
+6 -40
+-53 139
+-17 127
+-42 -54
+-114 94
+-319 471
+-105 571
+28 120
+-28 -110
+85 -11
+74 434
+163 103
+308 104
+-93 -307
+-67 -71
+158 0
+-35 -315
+62 -118
+211 63
+-11 85
+-43 -5
+-51 201
+58 70
+358 -196
+1 -171
+-99 -69
+-134 -336
+0 -342
+-122 -190
+-338 136
+120 -122
+-141 287
+-239 -79
+87 93
+369 -243
+-18 -108
+-169 -63
+-120 12
+241 73
+330 178
+-295 353
+-460 -38
+74 16
+-199 221
+189 -161
+-67 127
+211 -141
+117 -23
+-14 2
+-31 -403
+-162 -142
+319 327
+-191 -119
+-58 -72
+209 -87
+326 -52
+-318 -82
+-3 -233
+55 369
+-167 97
+84 174
+-134 -170
+-172 -92
+-191 111
+-164 182
+264 312
+-127 -141
+-218 278
+30 -10
+-60 474
+270 226
+181 271
+-172 94
+204 -118
+-413 285
+-527 -3
+-44 22
+174 -600
+-62 -384
+127 173
+-47 381
+-23 -237
+-77 517
+-96 -50
+171 77
+-28 -294
+46 -88
+115 341
+34 -74
+-179 149
+76 186
+335 355
+-51 -187
+146 128
+-120 -370
+-70 -214
+44 48
+48 -126
+-63 315
+221 131
+-328 -224
+12 44
+-40 -52
+-182 -156
+278 -84
+-102 168
+6 -312
+399 259
+9 141
+343 -87
+74 264
+-142 -90
+505 279
+278 6
+-306 180
+-5 -133
+440 -224
+-50 -84
+48 -164
+17 -43
+-25 -115
+-237 -67
+88 -342
+114 288
+416 234
+-453 351
+353 -103
+-152 -304
+290 302
+85 -301
+60 -138
+-128 -104
+-201 233
+183 -215
+3 -265
+373 -521
+206 322
+445 197
+67 109
+-279 -13
+143 -167
+96 236
+322 -204
+190 -162
+343 407
+46 -234
+54 -342
+380 -332
+-133 27
+-188 58
+-198 -176
+8 74
+-24 116
+22 -54
+-178 8
+441 47
+55 -119
+-93 55
+-192 -218
+347 367
+-288 58
+-103 -161
+111 -265
+-202 332
+-98 406
+-208 -248
+51 145
+169 67
+25 -131
+-105 201
+47 -401
+-128 122
+-139 131
+191 -89
+65 27
+95 61
+295 -87
+-162 -152
+303 -99
+149 -243
+-250 -452
+33 71
+127 -249
+130 56
+-367 -359
+171 -257
+72 88
+-19 137
+-93 -81
+313 303
+213 179
+-43 -179
+-67 51
+-66 102
+-96 -36
+-308 -8
+-6 -22
+-33 -311
+-152 314
+372 94
+-131 -47
+-33 -171
+-43 -255
+-40 42
+103 -139
+-62 -376
+-64 58
+222 428
+314 -54
+12 -2
+103 -21
+-91 -27
+10 -112
+-177 -55
+-52 -258
+61 -109
+-58 84
+36 -10
+94 -100
+154 -156
+-52 -276
+-190 32
+46 -366
+-366 -64
+199 201
+-64 46
+82 186
+-115 -59
+-111 191
+-284 90
+-113 57
+-402 -208
+74 62
+15 -55
+351 89
+-54 172
+-16 -138
+-15 -105
+-250 -88
+-35 -59
+246 -128
+-40 140
+113 -197
+-69 65
+36 -480
+206 2
+150 -82
+35 103
+199 -235
+17 -295
+-185 -17
+337 -107
+141 35
+23 -43
+-1 29
+137 185
+122 -272
+-194 -108
+41 -397
+323 377
+234 -278
+94 138
+-181 -23
+-6 -60
+-125 187
+-703 -75
+372 -180
+-28 418
+-320 -282
+194 250
+-42 376
+-318 -198
+-222 -102
+-12 2
+-72 28
+88 24
+-264 234
+-182 96
+-358 192
+-136 -112
+-92 198
+15 217
+-91 5
+-27 197
+-112 292
+-202 -286
+226 262
+437 -43
+301 141
+319 31
+36 -14
+305 -43
+-110 -8
+308 -4
+123 -245
+217 341
+-90 358
+30 -152
+104 -112
+47 -219
+208 56
+-232 2
+-165 -81
+110 4
+154 214
+-99 317
+53 -423
+-228 -16
+613 -185
+-16 -364
+-68 526
+215 55
+318 -122
+55 -365
+180 -556
+112 68
+44 576
+-19 151
+200 -164
+-48 276
+203 341
+8 -58
+160 310
+11 -165
+35 -75
+-401 -39
+-238 -110
+200 -136
+-53 371
+-22 -106
+450 140
+-319 167
+-37 -231
+92 -80
+59 -19
+327 261
+-117 -263
+-335 -291
+377 69
+-179 121
+-356 -220
+682 -38
+134 250
+-201 -401
+227 391
+19 -253
+-108 272
+-80 -478
+56 146
+-137 -191
+335 9
+-323 59
+-69 337
+443 -321
+215 211
+140 414
+-119 -413
+-219 27
+-189 21
+-24 -204
+-51 243
+-322 120
+-363 -191
+-301 -333
+-235 -173
+-33 47
+504 130
+43 -149
+-462 66
+-2 18
+74 32
+-444 -120
+-245 485
+-290 52
+42 118
+-136 336
+365 -97
+-248 10
+22 216
+108 -188
+-10 -64
+224 272
+589 -67
+-99 161
+486 312
+204 -388
+-169 259
+487 -11
+117 -129
+-166 238
+-133 -173
+-156 -302
+-106 -68
+-157 -195
+-287 85
+200 88
+169 241
+-88 -142
+296 -360
+-153 199
+243 1
+-153 43
+83 99
+108 -170
+302 -26
+251 377
+242 -58
+-163 139
+110 -126
+172 390
+242 122
+144 -62
+-20 -92
+-145 443
+141 -127
+-181 -87
+207 -285
+-290 16
+-154 62
+-306 58
+-493 67
+-59 -269
+49 -65
+-478 -170
+-390 -92
+335 73
+64 146
+-330 -106
+351 -23
+-123 -203
+-64 -148
+47 -339
+-157 -245
+-133 23
+282 218
+-94 -92
+-190 -18
+-392 386
+19 -31
+146 -58
+555 -57
+-431 -121
+66 -378
+-216 126
+-51 -91
+-296 -66
+-451 -189
+-48 -18
+-25 455
+148 444
+-155 -117
+26 256
+12 158
+-12 242
+25 -183
+1 -197
+154 42
+-163 -163
+158 -866
+154 22
+-3 -57
+59 333
+-74 134
+-499 13
+99 -275
+-155 -101
+-150 152
+454 -246
+-314 -106
+237 73
+-84 56
+406 -216
+20 -38
+316 -2
+192 154
+123 -73
+241 -261
+-74 -212
+-43 175
+331 127
+-201 -437
+-164 -24
+87 149
+-102 -248
+136 -348
+390 -314
+-247 -317
+98 -16
+132 -290
+106 -212
+-74 112
+151 195
+91 1
+-28 -24
+-123 51
+-508 -54
+16 -24
+171 95
+-164 -160
+-13 185
+-77 225
+98 172
+-102 70
+-114 48
+212 220
+-12 -138
+-96 -70
+-40 -270
+150 180
+229 497
+302 -380
+-77 -103
+139 -219
+6 254
+-265 -63
+166 84
+14 26
+-641 9
+-42 -166
+-725 231
+59 97
+37 -35
+-85 231
+-363 -103
+266 -106
+60 674
+-193 31
+-22 306
+266 -70
+373 13
+431 5
+322 -106
+28 20
+-90 54
+240 -54
+71 129
+16 122
+-147 -385
+-68 78
+12 -144
+-151 -77
+186 -186
+52 -200
+-254 124
+135 -157
+-91 139
+91 223
+-490 24
+-9 -473
+92 -240
+-85 191
+365 -515
+-130 188
+-266 -250
+-157 -249
+161 203
+132 -46
+-145 87
+-65 241
+-97 193
+-364 146
+41 317
+-149 151
+375 51
+-319 -97
+14 364
+-86 22
+61 155
+-13 -149
+214 -380
+-156 368
+-351 213
+-248 228
+-298 -178
+-33 205
+153 119
+-154 -14
+-87 -215
+154 330
+-340 -168
+28 -360
+-13 53
+9 115
+240 -280
+237 391
+244 -178
+-111 -427
+67 309
+36 20
+-473 -123
+-121 73
+44 4
+-7 57
+-14 88
+63 281
+179 11
+-136 200
+111 -423
+30 36
+-81 143
+-12 -142
+-307 -199
+26 170
+13 195
+-94 -122
+-50 -46
+127 369
+-105 -461
+-101 -19
+286 194
+-178 -34
+-163 15
+-23 395
+-24 -376
+10 68
+-157 247
+-117 -15
+386 -204
+248 -124
+-63 -39
+-251 301
+221 -159
+-204 100
+314 162
+520 24
+380 356
+-127 -373
+-89 323
+-38 530
+57 -123
+-114 382
+263 -11
+184 -102
+-131 25
+265 -517
+-111 3
+-165 -355
+-171 73
+-594 296
+-241 327
+292 -456
+241 285
+-38 74
+43 -61
+114 52
+-2 118
+497 51
+-236 320
+112 -106
+117 -183
+-87 -117
+-146 -282
+24 24
+-389 -7
+269 35
+191 -233
+49 51
+-55 -229
+-85 -287
+-178 -60
+147 -33
+-115 285
+62 -276
+-100 -84
+-34 -148
+-5 27
+17 205
+-332 200
+-380 106
+222 52
+220 172
+62 148
+-387 -19
+19 -121
+311 37
+279 101
+-229 -15
+2 160
+-51 -133
+-248 -18
+179 -85
+-287 75
+-73 -191
+-123 69
+-80 -124
+96 -328
+71 359
+-73 211
+-72 134
+-37 -655
+175 -255
+197 53
+-232 314
+-397 139
+118 18
+-51 -177
+-331 237
+-11 -13
+-319 -321
+439 7
+-139 219
+259 467
+29 81
+-207 -223
+-57 13
+201 383
+-72 234
+-55 -381
+18 -326
+165 73
+-83 373
+423 -231
+291 73
+198 40
+319 243
+392 262
+46 -130
+14 -120
+-88 -214
+-454 274
+-203 -91
+10 88
+56 -340
+-60 142
+-98 18
+-293 145
+61 -247
+-80 -124
+424 452
+589 -21
+243 -197
+116 -134
+-423 109
+75 -249
+334 -266
+-378 296
+-169 -23
+-425 -93
+150 -34
+25 185
+154 54
+175 -77
+153 93
+0 -536
+57 175
+-287 -301
+377 -35
+317 163
+&

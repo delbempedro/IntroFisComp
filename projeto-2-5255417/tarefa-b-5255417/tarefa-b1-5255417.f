@@ -4,7 +4,7 @@ c     cria os vetores que armazenarão a posição e passos dos andarilhos
       dimension ihisto(-1000:1000), ipx(0:1)
       
 c     limpa o vetor que armazena a posição dos andarilhos
-        ihisto(-1000:1000) = 0
+      ihisto(-1000:1000) = 0
       
 c     define o número de andarilhos
       m = 500000
@@ -46,7 +46,7 @@ c         adiciona o passo de acordo com o valor retornado por ipx()
       end do
       
 c     aloca a memória para salvar os dados do histograma
-      open(unit=1,file='histograma')
+      open(unit=1,file='histograma-5255417')
       
 c     inicia o loop para salvar as informações no histograma
       do i=-1000,1000

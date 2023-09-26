@@ -12,7 +12,7 @@ c     define o número de andarilhos
       m = 500000
       
 c     define as probabilidades      
-      write(*,*) "Qual é o valor de  desejado, onde p = 1/x?"
+      write(*,*) "Qual é o valor de p desejado, onde p = 1/x?"
       read(*,*) x
       ap = 1.0e0/x
 
