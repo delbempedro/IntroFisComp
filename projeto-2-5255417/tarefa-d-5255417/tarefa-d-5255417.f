@@ -1,7 +1,6 @@
       program entropia dos andarilhos bebados
             
-c     cria do nome do arquivo de saída e os vetores que armazenarão a posição dos andarilhos
-      character name*20
+c     cria os vetores que armazenarão a posição dos andarilhos
       dimension ihisto(-1000:1000,-1000:1000), ipx(0:3)
     
 c     define o número de andarilhos
@@ -15,6 +14,12 @@ c     define o número de passos
 
 c     aloca memória para salvar os dados da entropia
       open(unit=1, file='gráfico-5255417')
+
+c     define as posições máximas e mínimas do sistema
+      ixmax = 0
+      ixmin = 0
+      iymax = 0
+      iymin = 0
 
 c     calcula a entropia a cada passo
       ipassos = 1
@@ -47,10 +52,24 @@ c           incrementa um passo na direção correspondente a "int"
       
           end do
 
-c           define as coordenadas finais de acordo com quantos passos
-c           foram dados em cada direção
-            ix = ipx(0) - ipx(1)
-            iy = ipx(2) - ipx(3) 
+c         define as coordenadas finais de acordo com quantos passos
+c         foram dados em cada direção
+          ix = ipx(0) - ipx(1)
+          iy = ipx(2) - ipx(3)
+
+c         atualiza as posições máximas e mínimas
+          if(ix.gt.ixmax) then
+            ixmax = ix
+          end if
+          if(ix.lt.ixmin) then
+            ixmin = ix
+          end if
+          if(iy.gt.iymax) then
+            iymax = iy
+          end if
+          if(iy.lt.ixmin) then
+            iymin = iy
+          end if
       
           ihisto(ix,iy) = ihisto(ix,iy) + 1
       
@@ -58,7 +77,7 @@ c           foram dados em cada direção
 
 c       escreve em um arquivo a relação entropia X passos
         an = n
-        write(1,*) ipassos, entropia(ihisto,an)
+        write(1,*) ipassos, entropia(ihisto,an,ixmax,ixmin,iymax,iymin)
 
 c       incrementa a quantidade de passos
         ipassos = ipassos + 1
@@ -70,7 +89,7 @@ c     fecha a unidade de memória
       
       end program
 
-      function entropia(ihisto, an)
+      function entropia(ihisto, an,ixmax,ixmin,iymax,iymin)
       dimension ihisto(-1000:1000,-1000:1000)
 
 c     define o tamanho do retículado
@@ -80,10 +99,10 @@ c     inicia a variável entropia
       entropia = 0
 
 c     inicia o loop percorrendo todo o "plano"
-      i = -1000
-      do while(i.lt.1000)
-        j = -1000
-        do while(j.lt.1000)
+      i = ixmin
+      do while(i.lt.ixmax)
+        j = iymin
+        do while(j.lt.iymax)
 
 c         define o número de partículas inicial do retículado como 0
           aparticulas = 0
