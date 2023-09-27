@@ -39,9 +39,6 @@ c         define os passos possíveis
 c         define o loop de cada andarilho
           do j=0,ipassos
                                                       
-c           define a direção do passo
-            a = rand(0)
-      
 c           faz a divisão inteira de i por ap
             int = rand(0)/ap   
       
