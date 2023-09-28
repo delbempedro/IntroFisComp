@@ -22,8 +22,7 @@ c     define as posições máximas e mínimas do sistema
       iymin = 0
 
 c     calcula a entropia a cada passo
-      ipassos = 1
-      do while(ipassos.le.nmax)
+      do ipassos=1,nmax
 
 c       escreve 0 em todas as coordenadas do plano
         ihisto(-1000:1000,-1000:1000) = 0
@@ -79,9 +78,6 @@ c       escreve em um arquivo a relação entropia X passos
         an = n
         write(1,*) ipassos, entropia(ihisto,an,ixmax,ixmin,iymax,iymin)
 
-c       incrementa a quantidade de passos
-        ipassos = ipassos + 1
-
       end do
 
 c     fecha a unidade de memória
@@ -90,7 +86,7 @@ c     fecha a unidade de memória
       end program
 
       function entropia(ihisto, an,ixmax,ixmin,iymax,iymin)
-      dimension ihisto(-1000:1000,-1000:1000)
+      dimension ihisto(-1000:1000,-1000:1000), decisor(0:1000)
 
 c     define o tamanho do retículado
       iret = 10
@@ -117,18 +113,18 @@ c             soma à quantidade de a quantidade de partículas na posição (k,
             end do
           end do
 
-c         calcula a entropia devido a um retículado     
-          if(aparticulas.gt.0) then
+c         define a probabilidade das partículas estarem em
+c         um retículado fazendo a razão das que nele estão
+c         pelo total de partículas
+          aprobabilidade = aparticulas/an
 
-c             define a probabilidade das partículas estarem em
-c             um retículado fazendo a razão das que nele estão
-c             pelo total de partículas
-              aprobabilidade = aparticulas/an
+c         garante que aparículas não seja 0 (problema para calcular o ln)
+          decisor(0) = 0
+          decisor(1:1000) = aprobabilidade*log(aprobabilidade)
 
-c             soma a probabilidade devido a um retículado
-              entropia = entropia - aprobabilidade*log(aprobabilidade)
-            
-          end if
+c         soma a probabilidade devido a um retículado
+          iparticulas = aparticulas
+          entropia = entropia - decisor(iparticulas)
 
           j = j + iret
 
