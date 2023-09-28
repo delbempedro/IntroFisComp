@@ -2,7 +2,7 @@
        
       parameter (paredes = 100)
 c     cria os vetores que armazenarão a posição dos andarilhos
-      dimension ihisto(-100:100,-100:100), ipx(0:3)
+      dimension ihisto(-100:100,-100:100), ipx(0:3), ixvetor(-1:1), iyvetor(-1:1)
     
 c     define o número de andarilhos
       n = 1000
