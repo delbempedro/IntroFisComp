@@ -8,13 +8,13 @@ c     define "n" como inteiro*8 para poder receber valores maiores de passos
       integer*8 n
 
 c     limpa o vetor que armazena a posição dos andarilhos
-      ihisto(-1000:1000,-1000:1000) = 0
+      ihisto(-10000:10000,-10000:10000) = 0
 
 c     define o número de andarilhos
       m = 1000
 
 c     define as probabilidades      
-      ap = 0.250e0
+      ap = 0.25
 
 c     define o número de passos
       write(*,*) "Qual é o número de passos desejado?"
@@ -64,7 +64,7 @@ c       foram dados em cada direção
 
         somax = somax + ix
         somay = somay + iy
-        somar1 = somar1 + (ix**2 + iy**2)**2
+        somar1 = somar1 + (ix**2 + iy**2)
 
       end do
 
