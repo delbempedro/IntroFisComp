@@ -62,21 +62,20 @@ c       foram dados em cada direção
         ihisto(ix,iy) = ihisto(ix,iy) + 1
         write(1,*) ix,iy
 
-        somax = somax + ix
-        somay = somay + iy
-        somar1 = somar1 + (ix**2 + iy**2)**2
+        am = m
+        somax = somax + ix/am
+        somay = somay + iy/am
+        somar1 = somar1 + (ix**2 + iy**2)/am
 
       end do
 
 c     fecha a unidade de memória
       close(1)
 
-c     define as médias
-      amediax = somax/m
-      amediay = somay/m
-      amedia2 = (somar1 - (somax**2 + somay**2) )/m
+c     define a média
+      amedia2 = (somar1 - (somax**2 + somay**2) )
 
-      write(*,*) "<r> = ",amediax,amediay
+      write(*,*) "<r> = ",somax,somay
       write(*,*) "Delta²:",amedia2
       
       end program
