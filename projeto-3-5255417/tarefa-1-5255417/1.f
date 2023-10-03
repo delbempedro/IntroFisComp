@@ -36,7 +36,7 @@ c       escreve os valores de cada derivada para o valor corrente de h
 
       end do
 
-2     format(6('|',f16.10),'|')
+2     format(6('|',f10.5),'|')
 
       end program
 
