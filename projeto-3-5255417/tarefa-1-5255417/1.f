@@ -22,6 +22,11 @@ c     define os valores de h que serao utilizados
 c     abre o arquivo de saida
       open(unit=1,file='saida-5255417')
 
+c     escreve o cabecalho da tabela
+      write(1,*)'|          h                  fs3                   ff
+     12                 ft2                   fs5                 f2s5 
+     2               f3as5        |'
+
 c     loop que imprime os valores da tabela das derivadas para cada h
       do i=1,14
 
@@ -34,7 +39,7 @@ c       defiene o valor real das derivadas
         d3 = 671.514613457866
 
 c       escreve os valores de cada derivada para o valor corrente de h
-        write(1,2) v,abs(fs3(v)-d1),abs(ff2(v)-d1),abs(ft2(v)-d1),abs(fs
+        write(1,1) v,abs(fs3(v)-d1),abs(ff2(v)-d1),abs(ft2(v)-d1),abs(fs
      1  5(v)-d1),abs(f2s5(v)-d2),abs(f3as5(v)-d3)
 
       end do
@@ -42,7 +47,8 @@ c       escreve os valores de cada derivada para o valor corrente de h
 c     fecha o arquivo de saida
       close(1)
 
-2     format(7('|',f20.10),'|')
+c     formata as escritas
+1     format(7('|',f20.10),'|')
 
       end program
 
