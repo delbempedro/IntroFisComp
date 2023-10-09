@@ -23,9 +23,9 @@ c     abre o arquivo de saida
       open(unit=1,file='saida-5255417')
 
 c     escreve o cabecalho da tabela
-      write(1,*)'|          h                  fs3                   ff
-     12                 ft2                   fs5                 f2s5 
-     2               f3as5        |'
+      write(1,*)'|          h                  fs3                   ff2
+     1                 ft2                   fs5                 f2s5 
+     2           f3as5          |'
 
 c     loop que imprime os valores da tabela das derivadas para cada h
       do i=1,14
@@ -43,6 +43,11 @@ c       escreve os valores de cada derivada para o valor corrente de h
      1  5(v)-d1),abs(f2s5(v)-d2),abs(f3as5(v)-d3)
 
       end do
+
+c     escreve o fim da tabela
+      write(1,*)'EXATO: 9.796782013838 | 9.796782013838 | 9.796782013838 | 9.7
+     296782013838 | 64.098324549472 | 64.098324549472 | 671.51461345786
+     36'
 
 c     fecha o arquivo de saida
       close(1)
@@ -97,7 +102,8 @@ c     define a segunda derivada simetrica de 5 pontos
       real*8 function f2s5 (h)
       implicit real*8 (a-h,o-z)
 
-        f2s5 = ( f(-1.0d0*h)-2.0d0*f(0.0d0*h)+f(1.0d0*h ) )/(h**2.0d0)
+        f2s5 = ( -f(-2.0d0*h)+16.0d0*f(-1.0d0*h)-30.0d0*f(0.0d0*h )+16.
+     1  0d0*f(1.0d0*h)-f(2.0d0*h))/(12.0d0*(h**2.0d0))
 
       end function
 
