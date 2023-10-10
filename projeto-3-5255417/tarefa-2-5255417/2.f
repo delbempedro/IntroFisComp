@@ -59,7 +59,7 @@ c       metodo de boole
 
           bool = bool + b(x,h)
 
-          h = h + 4*val(i)
+          h = h + 5*val(i)
 
         end do
 
