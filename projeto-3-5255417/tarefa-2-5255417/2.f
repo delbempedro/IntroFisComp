@@ -12,7 +12,7 @@ c     define os valores de h que serao utilizados
       val(6) = 1.0d0/384.0d0
       val(7) = 1.0d0/768.0d0
       val(8) = 1.0d0/1536.0d0
-      val(9) = 1.0d0/3027.0d0
+      val(9) = 1.0d0/3072.0d0
       val(10) = 1.0d0/6144.0d0
 
 c     abre o arquivo de saida
@@ -20,7 +20,7 @@ c     abre o arquivo de saida
       
 c     escreve o cabecalho da tabela
       write(1,*)'|          h                trapezio             Simpso
-     1n  Boole |'
+     1n              Boole         |'
       
 c     loop que imprime os valores da tabela das integrais para cada h
       do i=1,10
@@ -34,7 +34,7 @@ c       define o valor real da integral
 c       define o valor inicial das integrais para cada metodo
         trap = 0.0d0
         simp = 0.0d0
-        boll = 0.0d0
+        bool = 0.0d0
       
 c       define o valor inicial de h
         h = val(i)
@@ -57,7 +57,7 @@ c       define o do pra somar os valores da integral de -2h ate 2h para o
 c       metodo de boole
         do while(h.lt.1.0d0)
 
-          bool = bool + b(x,h)
+          bool = bool + b(h,val(i))
 
           h = h + 4*val(i)
 
@@ -109,7 +109,10 @@ c     define a regra de Boole
       real*8 function b(x,h)
       implicit real*8 (a-h,o-z)
 
-      b = 2.0d0*h/45.0d0*(7*f(x,0.0d0)+32.0d0*f(x,h)+12.0d0*f(x,2.0d0*h
-     1)+32.0d0*f(x,3.0d0*h)+7*f(x,4.0d0*h))
+      b = 2.0d0*h/45.0d0*(7*f(x,-h*1.0d0)+32.0d0*f(x,0.0d0)+12.0d0*f(x,
+     1h)+32.0d0*f(x,2.0d0*h)+7*f(x,3.0d0*h))
+
+      write(*,*)(x-h),x,(x+h),(x+2.0d0*h),(x+3.0d0*h)
+      write(*,*)"uma iteracao"
 
       end function
