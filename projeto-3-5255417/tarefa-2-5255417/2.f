@@ -43,8 +43,8 @@ c       define o do pra somar os valores da integral de -h ate h para o
 c       metodo do trapezio e de simpson
         do while(h.lt.1.0d0)
 
-          trap = trap + t(h,val(i))
-          simp = simp + s(h,val(i))
+          trap = trap + t(h,v)
+          simp = simp + s(h,v)
 
           h = h + 2*val(i)
 
@@ -57,14 +57,15 @@ c       define o do pra somar os valores da integral de -2h ate 2h para o
 c       metodo de boole
         do while(h.lt.1.0d0)
 
-          bool = bool + b(h,val(i))
+          bool = bool + b(h-v,v)
 
           h = h + 4*val(i)
 
         end do
 
 c       escreve os valores de cada integral para o valor corrente de h
-        write(1,1) v,abs(trap-ri),abs(simp-ri),abs(bool-ri)
+        write(1,1)v,abs(trap-ri),abs(simp-ri),abs(bool-ri)
+c        write(1,*)trap,simp,bool
       
       end do
       
@@ -109,10 +110,7 @@ c     define a regra de Boole
       real*8 function b(x,h)
       implicit real*8 (a-h,o-z)
 
-      b = 2.0d0*h/45.0d0*(7*f(x,-h*1.0d0)+32.0d0*f(x,0.0d0)+12.0d0*f(x,
-     1h)+32.0d0*f(x,2.0d0*h)+7*f(x,3.0d0*h))
-
-      write(*,*)(x-h),x,(x+h),(x+2.0d0*h),(x+3.0d0*h)
-      write(*,*)"uma iteracao"
+      b = 2.0d0*h/45.0d0*(7*f(x,0.0d0)+32.0d0*f(x,h*1.0d0)+12.0d0*f(x,h
+     1*2.0d0)+32.0d0*f(x,3.0d0*h)+7*f(x,4.0d0*h))
 
       end function
