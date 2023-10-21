@@ -1,4 +1,4 @@
-      program derivda
+      program derivada
 
       implicit real*8 (a-h,o-z)
       dimension val(14)
@@ -57,7 +57,7 @@ c     formata as escritas
 
       end program
 
-c     define a função de 1/2 + h
+c     define a funcao de 1/2 + h
       real*8 function f(h)
       implicit real*8 (a-h,o-z)
 
