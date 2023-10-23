@@ -1,7 +1,7 @@
       program raiz
 
       implicit real*8 (a-h,o-z)
-      dimension vetbd(3,6), vetrn(3,6), vetsec(3,6)
+      dimension vetbd(3,6), vetrn(3,6), vetsec(3,6), auxiliar(6)
 
 c     zera os vetores
       do i=1,3
@@ -19,7 +19,7 @@ c     passo incementado na busca pela raiz
       ap = 0.1d0
 
 c     define o valor inicial como -10
-      raizbd = -10.0d0
+      raizbd = -10.0000005d0
 
 c     abre o arquivo de saida
       open(unit=1,file='saida-5255417')
@@ -39,14 +39,41 @@ c                 verifica se a raiz esta dentro do intervalo
                   aux = raizbd + ap
                   if(f(raizbd)*f(aux).le.0.0d0) then
 
-c                       inicia o loop com as 6 interacoes da tabela
-                        do k=1,6
+c                       inicia o loop ate que a raiz seja menor ou igual a tolerancia
+                        icount = 1
+                        do while(abs(f(raizbd)).ge.tol)
 
-c                             divide o intervalo pela metade e imprimi
-c                             a raiz correspondente
                               ap = ap/2.0d0
                               aux = raizbd + ap
-                              vetbd(i,k) = aux
+
+c                             verifica se a tabela suporta mais um valor
+                              if(icount.lt.6)then
+c                                   divide o intervalo pela metade e imprimi
+c                                   a raiz correspondente
+                                    vetbd(i,icount) = aux
+                                    icount = icount + 1
+
+c                             se a tabela nao suportar mais um valor
+c                             faz a mudanca para ficar com os 6 ultimos
+                              else
+
+c                                   salva a nova ordem de valores em uma lsita auxilixar
+                                    auxiliar(1) = vetbd(i,2)
+                                    auxiliar(2) = vetbd(i,3)
+                                    auxiliar(3) = vetbd(i,4)
+                                    auxiliar(4) = vetbd(i,5)
+                                    auxiliar(5) = vetbd(i,6)
+                                    auxiliar(6) = aux
+
+c                                   passa os valores da lista auxiliar para lista
+                                    vetbd(i,1) = auxiliar(1)
+                                    vetbd(i,2) = auxiliar(2)
+                                    vetbd(i,3) = auxiliar(3)
+                                    vetbd(i,4) = auxiliar(4)
+                                    vetbd(i,5) = auxiliar(5)
+                                    vetbd(i,6) = auxiliar(6)
+
+                              end if
 
 c                             muda o intervalo analisado ate que haja
 c                             uma raiz no intervalo
