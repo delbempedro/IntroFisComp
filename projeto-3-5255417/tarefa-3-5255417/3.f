@@ -11,7 +11,6 @@ c     zera os vetores
                   vetsec(i,j)=0.0d0
             end do
       end do
-c     valores exatos -7, 2, 9
 
 c     tolerância para considerar a raiz exata
       tol = 10d-6
@@ -145,6 +144,9 @@ c     imprimi os resultados no arquivo
      42,i),vetrn(3,i),vetsec(1,i),vetsec(2,i),vetsec(3,i)
 
       end do
+
+c     imprimi os valores exatos      
+      write(1,*)'Valores Exatos: -7, 2, 9'
 
 c     formata as escritas
 1     format(9('|',f14.8),'|')
