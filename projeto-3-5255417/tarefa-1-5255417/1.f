@@ -46,8 +46,8 @@ c       escreve os valores de cada derivada para o valor corrente de h
 
 c     escreve o fim da tabela
       write(1,*)'EXATO: 9.796782013838 | 9.796782013838 | 9.796782013838 | 9.7
-     296782013838 | 64.098324549472 | 64.098324549472 | 671.51461345786
-     36'
+     296782013838 | 64.098324549472 | 64.098324549472 | 671.514613457866
+     3'
 
 c     fecha o arquivo de saida
       close(1)

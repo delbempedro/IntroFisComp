@@ -10,7 +10,7 @@ c     passo incementado na busca pela raiz
       ap = 0.1d0
 
 c     define o valor inicial como -10
-      raizbd = -10
+      raizbd = -10.0d0
 
 c     abre o arquivo de saida
       open(unit=1,file='saida-5255417')
@@ -27,17 +27,33 @@ c           passo incementado na busca pela raiz
 
 c           inicializa o valor de raizbd para procurar a próxima raiz
             raizbd = raizbd + ap
-
-            do while(abs(f(raizbd)).ge.tol)
-                  
-                  aux = raizbd + 2.0d0*ap
-                  if(f(raizbd)*f(aux).le.0.0d0) then
+            j = 1
+            do while(j.eq.1)
+c abs(f(raizbd)).ge.tol
+                  aux = raizbd + ap
+                  if(f(raizbd)*f(aux).lt.0.0d0) then
 
                         ap = ap/2.0d0
                         x = raizbd + ap
                         write(1,*)x
+                        k = 1
+                        do while(k.lt.6)
+
+                              aux = raizbd + ap
+                              if(f(raizbd)*f(aux).lt.0.0d0) then
+                                    ap = ap/2.0d0
+                                    x = raizbd + ap
+                                    write(*,*)x
+                                    k = k + 1
+                              end if
+
+                              raizbd = raizbd + ap
+
+                        end do
+                        j = 0
 
                   end if
+            
 
                   raizbd = raizbd + ap
 
@@ -111,7 +127,7 @@ c                 atualiza o valor atual
 
       end do
 
-1     format(a,f1.0)
+1     format(a1,f1.0)
 
 c     fecha o arquivo de saida
       close(1)

@@ -65,7 +65,6 @@ c       metodo de boole
 
 c       escreve os valores de cada integral para o valor corrente de h
         write(1,1)v,abs(trap-ri),abs(simp-ri),abs(bool-ri)
-c        write(1,*)trap,simp,bool
       
       end do
       
