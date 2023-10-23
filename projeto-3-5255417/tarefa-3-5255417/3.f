@@ -12,7 +12,7 @@ c     zera os vetores
             end do
       end do
 
-c     tolerância para considerar a raiz exata
+c     tolerancia para considerar a raiz exata
       tol = 10d-6
 
 c     passo incementado na busca pela raiz
@@ -30,16 +30,16 @@ c     busca direta:
 c           passo incementado na busca pela raiz
             ap = 0.1d0
 
-c           inicializa o valor de raizbd para procurar a próxima raiz
+c           inicializa o valor de raizbd para procurar a proxima raiz
             raizbd = raizbd + ap
             j = 1
             do while(j.eq.1)
 
-c                 verifica se a raiz está dentro do intervalo
+c                 verifica se a raiz esta dentro do intervalo
                   aux = raizbd + ap
                   if(f(raizbd)*f(aux).le.0.0d0) then
 
-c                       inicia o loop com as 6 interações da tabela
+c                       inicia o loop com as 6 interacoes da tabela
                         do k=1,6
 
 c                             divide o intervalo pela metade e imprimi
@@ -48,7 +48,7 @@ c                             a raiz correspondente
                               aux = raizbd + ap
                               vetbd(i,k) = aux
 
-c                             muda o intervalo analisado até que haja
+c                             muda o intervalo analisado ate que haja
 c                             uma raiz no intervalo
                               do while(f(raizbd)*f(aux).gt.0.0d0)
 
@@ -78,7 +78,7 @@ c           define o valor do passo
 c           define o valor inicial
             raizrn = -10.0d0 + ap
 
-c           define o contador de interações
+c           define o contador de interacoes
             icount = 1
 
             do while(abs(f(raizrn)).ge.tol)
@@ -107,7 +107,7 @@ c           define o valor inicial
 c           define o valor anterior
             aux = -10.0d0 + (ap-1.0d0)
 
-c           define o contador de interações
+c           define o contador de interacoes
             icount = 1
 
             do while(abs(f(raizs)).ge.tol)
@@ -140,8 +140,10 @@ c     imprimi o cabeçalho da tabela
 c     imprimi os resultados no arquivo
       do i=1,6
 
-            write(1,1)vetbd(1,i),vetbd(2,i),vetbd(3,i),vetrn(1,i),vetrn(
-     42,i),vetrn(3,i),vetsec(1,i),vetsec(2,i),vetsec(3,i)
+c           salva qual e a interacao corrente
+            a = i
+            write(1,1)i,vetbd(1,i),vetbd(2,i),vetbd(3,i),vetrn(1,i),vetr
+     4n(2,i),vetrn(3,i),vetsec(1,i),vetsec(2,i),vetsec(3,i)
 
       end do
 
@@ -149,14 +151,14 @@ c     imprimi os valores exatos
       write(1,*)'Valores Exatos: -7, 2, 9'
 
 c     formata as escritas
-1     format(9('|',f14.8),'|')
+1     format(i1,9('|',f14.8),'|')
 
 c     fecha o arquivo de saida
       close(1)
 
       end program
 
-c     define a função
+c     define a funcao
       real*8 function f(x)
       implicit real*8 (a-h,o-z)
 
