@@ -2,6 +2,15 @@
 
       implicit real*8 (a-h,o-z)
       dimension vetbd(3,6), vetrn(3,6), vetsec(3,6)
+
+c     zera os vetores
+      do i=1,3
+            do j=1,6
+                  vetbd(i,j)=0.0d0
+                  vetrn(i,j)=0.0d0
+                  vetsec(i,j)=0.0d0
+            end do
+      end do
 c     valores exatos -7, 2, 9
 
 c     tolerância para considerar a raiz exata
@@ -17,11 +26,7 @@ c     abre o arquivo de saida
       open(unit=1,file='saida-5255417')
 
 c     busca direta:
-      write(1,*)'Busca Direta'
       do i=1,3
-
-c           imprimi a indicação de qual raiz está sendo calculada
-            write(1,1)"r",i
 
 c           passo incementado na busca pela raiz
             ap = 0.1d0
@@ -66,11 +71,7 @@ c                             uma raiz no intervalo
       end do
 
 c     Newton-Raphson:
-      write(1,*)'Newton-Raphson'
       do i=1,3
-
-c           imprimi a indicação de qual raiz está sendo calculada
-            write(1,1)"r",i
 
 c           define o valor do passo
             ap = (i-1)*10.0d0
@@ -96,11 +97,7 @@ c                 incrementa o contador
       end do
 
 c     Secante:
-      write(1,*)'Secante'
       do i=1,3
-
-c           imprimi a indicação de qual raiz está sendo calculada
-            write(1,1)"r",i
 
 c           define o valor do passo
             ap = (i-1)*10.0d0
@@ -124,7 +121,7 @@ c                 atualiza o valor antigo
 
 c                 atualiza o valor atual
                   raizs = x
-                  vetrn(i,icount) = raizs
+                  vetsec(i,icount) = raizs
 
 c                 incrementa o contador
                   icount = icount + 1
@@ -133,7 +130,24 @@ c                 incrementa o contador
 
       end do
 
-1     format(a,i1)
+c     imprimi o cabeçalho da tabela
+      write(1,*)'|                Busca Direta                |         
+     1      Newton-Raphson               |                   Secante    
+     4              |'
+      write(1,*)'|      r1      |      r2      |      r3      |      r1 
+     3     |      r2      |      r3      |      r1      |      r2      |
+     4      r3      |'
+
+c     imprimi os resultados no arquivo
+      do i=1,6
+
+            write(1,1)vetbd(1,i),vetbd(2,i),vetbd(3,i),vetrn(1,i),vetrn(
+     42,i),vetrn(3,i),vetsec(1,i),vetsec(2,i),vetsec(3,i)
+
+      end do
+
+c     formata as escritas
+1     format(9('|',f14.8),'|')
 
 c     fecha o arquivo de saida
       close(1)
