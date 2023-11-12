@@ -15,26 +15,44 @@ c     define, arbitrariamente, as condicoes iniciais
       theta0 = 1.0d0
       fase = 0.0d0
 
+c     defini qual o espacamento de "tempo" entre as
+c     incrementacoes em theta
+      deltat = 0.04d0
+
+c     abre os arquivos onde serao salvas as informacoes
+      open(unit=1,file="periodo")
+
+c     inicia o loop para thetas diferentes
+      do i=1,10
+
+c     define o theta0
+      theta0 = i*10
+
 c     inicia o valor de theta e omega de acordo com a
 c     solucao analitica
       theta = theta0*dsin(fase)
       omega = theta0*((g/l)**0.5d0)*dcos(fase)
 
-c     defini o "tempo" de analise, qual o espacamento de "tempo"
-c     entre as incrementacoes em theta e omega e o tempo inical
-      tempomax = 80.0d0
-      deltat = 0.04d0
+c     (re)inicia o tempo
       tempo = 0.0d0
 
-c     abre os arquivos onde serao salvas as informacoes
-      open(unit=1,file="euler-cromer")
-      open(unit=2,file="energia-conservada")
+c     efetua a primeira iteracao
 
-c     inicia o loop para thetas diferentes
-      do theta0=1,10
+c           salva o valor de theta antes de altera-lo
+            thetaant = theta
+c           define o tempo atual
+            tempo = tempo + deltat
+c           incrementa theta e omega se acordo com o metodo de euler
+            omega = omega - (g/l)*theta*deltat
+            theta = theta + omega*deltat
 
-c           inicia o loop de oscilacao
-            do while(tempo.lt.tempomax)
+c     fim da primeira iteracao
+
+c           inicia o loop de oscilacao ate que theta seja zerado
+            do while(theta/thetaant.lt.0.0d0)
+
+c                 salva o valor de theta antes de altera-lo
+                  thetaant = theta
 
 c                 define o tempo atual
                   tempo = tempo + deltat
@@ -48,7 +66,12 @@ c                 se theta passar, em modulo, de 2pi - faz a carrecao adequada
                         theta = mod(theta,2.0d0*realpi)
                   end if
 
+                  write(*,*)theta
+
             end do
+
+c           escreve periodo(theta) atual no arquivo
+            write(1,*)tempo,theta0
 
       end do
 

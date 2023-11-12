@@ -54,7 +54,7 @@ c           calcula a energia
 c           escreve o theta(tempo) atual no arquivo
             write(1,*)tempo,theta
 
-c           escreve o theta(tempo) atual no arquivo
+c           escreve o enerfia(tempo) atual no arquivo
             write(2,*)tempo,energia
 
       end do
