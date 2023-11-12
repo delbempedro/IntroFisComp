@@ -1,4 +1,4 @@
-      program euler
+      program eulercromer
 
       implicit real*8(a-h,o-z)
 
@@ -27,8 +27,8 @@ c     entre as incrementacoes em theta e omega e o tempo inical
       tempo = 0.0d0
 
 c     abre os arquivos onde serao salvas as informacoes
-      open(unit=1,file="euler")
-      open(unit=2,file="energia")
+      open(unit=1,file="euler-cromer")
+      open(unit=2,file="energia-conservada")
 
 c     inicia o loop de oscilacao
       do while(tempo.lt.tempomax)
@@ -36,12 +36,9 @@ c     inicia o loop de oscilacao
 c           define o tempo atual
             tempo = tempo + deltat
 
-c           salva o theta antigo, antes de altera-lo
-            thetaant = theta
-
 c           incrementa theta e omega se acordo com o metodo de euler
+            omega = omega - (g/l)*theta*deltat
             theta = theta + omega*deltat
-            omega = omega - (g/l)*thetaant*deltat
 
 c           se theta passar, em modulo, de 2pi - faz a carrecao adequada
             if(abs(theta).ge.2.0d0*realpi) then
