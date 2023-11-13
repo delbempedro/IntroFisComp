@@ -18,7 +18,6 @@ c     incrementacoes em theta
 c     abre os arquivos onde serao salvas as informacoes
       open(unit=1,file="periodo")
       open(unit=2,file="periodo-analitico")
-      open(unit=3,file="tempos")
 
 c     inicia o loop para thetas diferentes
       do i=1,20
@@ -50,7 +49,6 @@ c                 incrementa um em pcontrolador se a velocidade mudar
                   if(omega*omegaant.lt.0.0d0)then
                         pcontrolador = pcontrolador + 1
                   end if
-                  write(3,*)tempo,theta
 
             end do
 
@@ -82,6 +80,5 @@ c           (re)calcula o periodo
 c     fecha os arquivos utilizados
       close(1)
       close(2)
-      close(3)
 
       end program
