@@ -1,4 +1,4 @@
-      program amortecidoforcado
+      program omegadetheta
 
       implicit real*8(a-h,o-z)
       dimension amplitude(2)
@@ -29,7 +29,7 @@ c     solucao analitica
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 200.0d0
+      tempomax = 80.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -52,29 +52,21 @@ c                 define o tempo atual
 
 c                 incrementa theta1 e omega1 se acordo com o metodo
 c                 de euler amortecido
-                  omega1 = omega1 - (g/l)*theta1*deltat - gamma*omega1*d
-     4eltat + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  omega1 = omega1 - (g/l)*dsin(theta1)*deltat - gamma*om
+     1ega1*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta1 = theta1 + omega1*deltat
 
-c                 se theta1 passar, em modulo, de 2pi - faz a carrecao adequada
-                  if(abs(theta1).ge.2.0d0*realpi) then
-                        theta1 = mod(theta1,2.0d0*realpi)
-                  end if
 
 c                 incrementa theta2 e omega2 se acordo com o metodo
 c                 de euler amortecido
-                  omega2 = omega2 - (g/l)*theta2*deltat - gamma*omega2*d
-     4eltat + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  omega2 = omega2 - (g/l)*dsin(theta2)*deltat - gamma*om
+     2ega2*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta2 = theta2 + omega2*deltat
 
-c                 se theta2 passar, em modulo, de 2pi - faz a carrecao adequada
-                  if(abs(theta2).ge.2.0d0*realpi) then
-                        theta2 = mod(theta2,2.0d0*realpi)
-                  end if
-
-c                 escreve o theta(tempo) atual no arquivo
-                  write(i,*)tempo,omega1
-                  write(i+2,*)tempo,omega2
+c                 escreve o omega(theta) atual, no arquivo - para cada
+c                 theta inicial
+                  write(i,*)theta1,omega1
+                  write(i+2,*)theta2,omega2
 
             end do
 

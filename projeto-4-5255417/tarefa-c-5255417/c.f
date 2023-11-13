@@ -1,4 +1,4 @@
-      program amortecidoforcado
+      program deltatheta
 
       implicit real*8(a-h,o-z)
       dimension amplitude(2)
@@ -20,9 +20,6 @@ c     define a constante de amortecimento e a frequencia da forca
       gamma = 0.05d0
       frequencia = 2.0d0/3.0d0
 
-c     define, arbitrariamente, as condicoes iniciais
-      fase = 0.0d0
-
 c     inicia o valor de theta e omega de acordo com a
 c     solucao analitica
       theta1 = 1.0d0
@@ -32,7 +29,7 @@ c     solucao analitica
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 80.0d0
+      tempomax = 200.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -57,25 +54,15 @@ c                 de euler amortecido
      1ega1*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta1 = theta1 + omega1*deltat
 
-c                 se theta1 passar, em modulo, de 2pi - faz a carrecao adequada
-                  if(abs(theta1).ge.2.0d0*realpi) then
-                        theta1 = mod(theta1,2.0d0*realpi)
-                  end if
-
 c                 incrementa theta2 e omega2 se acordo com o metodo
 c                 de euler amortecido
                   omega2 = omega2 - (g/l)*dsin(theta2)*deltat - gamma*om
      2ega2*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta2 = theta2 + omega2*deltat
 
-c                 se theta2 passar, em modulo, de 2pi - faz a carrecao adequada
-                  if(abs(theta2).ge.2.0d0*realpi) then
-                        theta2 = mod(theta2,2.0d0*realpi)
-                  end if
-
 c                 escreve o theta(tempo), com escala semi-logaritmica,
 c                 atual, no arquivo
-                  write(i,*)dlog(tempo),(theta1-theta2)
+                  write(i,*)tempo,dlog(theta1-theta2)
 
             end do
 
