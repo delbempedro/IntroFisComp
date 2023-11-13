@@ -26,13 +26,13 @@ c     define, arbitrariamente, as condicoes iniciais
 c     inicia o valor de theta e omega de acordo com a
 c     solucao analitica
       theta1 = 1.0d0
-      omega1 = theta1*((g/l)**0.5d0)*dcos(fase)
+      omega1 = 0.0d0
       theta2 = 1.001d0
-      omega2 = theta2*((g/l)**0.5d0)*dcos(fase)
+      omega2 = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 200.0d0
+      tempomax = 80.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -53,8 +53,8 @@ c                 define o tempo atual
 
 c                 incrementa theta1 e omega1 se acordo com o metodo
 c                 de euler amortecido
-                  omega1 = omega1 - (g/l)*theta1*deltat - gamma*omega1*d
-     4eltat + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  omega1 = omega1 - (g/l)*dsin(theta1)*deltat - gamma*om
+     1ega1*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta1 = theta1 + omega1*deltat
 
 c                 se theta1 passar, em modulo, de 2pi - faz a carrecao adequada
@@ -64,8 +64,8 @@ c                 se theta1 passar, em modulo, de 2pi - faz a carrecao adequada
 
 c                 incrementa theta2 e omega2 se acordo com o metodo
 c                 de euler amortecido
-                  omega2 = omega2 - (g/l)*theta2*deltat - gamma*omega2*d
-     4eltat + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  omega2 = omega2 - (g/l)*dsin(theta2)*deltat - gamma*om
+     2ega2*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta2 = theta2 + omega2*deltat
 
 c                 se theta2 passar, em modulo, de 2pi - faz a carrecao adequada
@@ -73,8 +73,9 @@ c                 se theta2 passar, em modulo, de 2pi - faz a carrecao adequada
                         theta2 = mod(theta2,2.0d0*realpi)
                   end if
 
-c                 escreve o theta(tempo) atual no arquivo
-                  write(i,*)tempo,theta1-theta2
+c                 escreve o theta(tempo), com escala semi-logaritmica,
+c                 atual, no arquivo
+                  write(i,*)dlog(tempo),(theta1-theta2)
 
             end do
 

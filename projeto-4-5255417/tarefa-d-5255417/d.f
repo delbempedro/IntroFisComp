@@ -20,15 +20,12 @@ c     define a constante de amortecimento e a frequencia da forca
       gamma = 0.05d0
       frequencia = 2.0d0/3.0d0
 
-c     define, arbitrariamente, as condicoes iniciais
-      fase = 0.0d0
-
 c     inicia o valor de theta e omega de acordo com a
 c     solucao analitica
       theta1 = 1.0d0
-      omega1 = theta1*((g/l)**0.5d0)*dcos(fase)
+      omega1 = 0.0d0
       theta2 = 1.001d0
-      omega2 = theta2*((g/l)**0.5d0)*dcos(fase)
+      omega2 = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega

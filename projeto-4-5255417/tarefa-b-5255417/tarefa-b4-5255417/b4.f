@@ -21,18 +21,13 @@ c     define a constante de amortecimento e a frequencia da forca
       gamma = 0.05d0
       frequencia = 2.0d0/3.0d0
 
-c     define, arbitrariamente, as condicoes iniciais
-      theta0 = 1.0d0
-      fase = 0.0d0
-
-c     inicia o valor de theta e omega de acordo com a
-c     solucao analitica
-      theta = theta0*dsin(fase)
-      omega = theta0*((g/l)**0.5d0)*dcos(fase)
+c     inicia o valor de theta e omega
+      theta = realpi/6.0d0
+      omega = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 200.0d0
+      tempomax = 100.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -57,19 +52,19 @@ c                 define o tempo atual
 
 c                 incrementa theta e omega se acordo com o metodo
 c                 de euler amortecido
-                  omega = omega - (g/l)*theta*deltat - gamma*omega*delta
-     4t + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  omega = omega - (g/l)*dsin(theta)*deltat - gamma*omega
+     4*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta = theta + omega*deltat
 
-c                 se theta passar, em modulo, de 2pi - faz a carrecao adequada
+c                 escreve o theta(tempo) atual no arquivo e se theta passar,
+c                 em modulo, de 2pi - faz a carrecao adequada
                   if(abs(theta).ge.2.0d0*realpi) then
-                        theta = mod(theta,2.0d0*realpi)
-                  end if
-
-c                 escreve o theta(tempo) e omega (theta)
-c                 atual no arquivo
-                  write(i,*)tempo,theta
-                  write(i+3,*)tempo,omega
+                        write(i,*)tempo,mod(theta,2.0d0*realpi)
+                  else
+                        write(i,*)tempo,theta
+                  end if 
+c                 escreve o omega (theta) atual no arquivo
+                        write(i+3,*)tempo,omega
 
             end do
 

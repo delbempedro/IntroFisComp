@@ -11,14 +11,9 @@ c     referentes ao pendulo
       l = 9.8d0
       m = 1.0d0
 
-c     define, arbitrariamente, as condicoes iniciais
-      theta0 = 1.0d0
-      fase = 0.0d0
-
-c     inicia o valor de theta e omega de acordo com a
-c     solucao analitica
-      theta = theta0*dsin(fase)
-      omega = theta0*((g/l)**0.5d0)*dcos(fase)
+c     inicia o valor de theta e omega
+      theta = realpi/6.0d0
+      omega = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega e o tempo inical
@@ -40,16 +35,16 @@ c           incrementa theta e omega se acordo com o metodo de euler
             omega = omega - (g/l)*theta*deltat
             theta = theta + omega*deltat
 
-c           se theta passar, em modulo, de 2pi - faz a carrecao adequada
-            if(abs(theta).ge.2.0d0*realpi) then
-                  theta = mod(theta,2.0d0*realpi)
-            end if
-
 c           calcula a energia
-            energia = l*m*( ((omega**2)*l)/2.0d0 + g*(1+dcos(theta)) )
+            energia = l*m*( ((omega**2)*l)/2.0d0 - g*(1+dcos(theta)) )
 
-c           escreve o theta(tempo) atual no arquivo
-            write(1,*)tempo,theta
+c           escreve o theta(tempo) atual no arquivo e se theta passar,
+c           em modulo, de 2pi - faz a carrecao adequada
+            if(abs(theta).ge.2.0d0*realpi) then
+                  write(1,*)tempo,mod(theta,2.0d0*realpi)
+            else
+                  write(1,*)tempo,theta
+            end if 
 
 c           escreve o energia(tempo) atual no arquivo
             write(2,*)tempo,energia
