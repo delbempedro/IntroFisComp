@@ -81,7 +81,7 @@ c           define o do pra somar os valores da integral
                   h = h + 4*hi
 
             end do
-            periodo = 2.0d0*dsqrt(2.0d0*l/g)*( periodo + dsqrt(epson)/ds
+            periodo = 2.0d0*dsqrt(2.0d0*r/g)*( periodo + dsqrt(epson)/ds
      1qrt(dsin(theta0)) )
 
             write(2,*)periodo,theta0

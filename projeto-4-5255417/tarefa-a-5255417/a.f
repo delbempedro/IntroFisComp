@@ -43,7 +43,7 @@ c           incrementa theta e omega se acordo com o metodo de euler
             omega = omega - (g/r)*thetaant*deltat
 
 c           calcula a energia
-            energia = r*m*( ((omega**2)*r)/2.0d0 + g*(1+dcos(theta)) )
+            energia = r*m*( ((omega**2)*r)/2.0d0 - g*(1+dcos(theta)) )
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada

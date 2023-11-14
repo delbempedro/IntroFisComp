@@ -14,7 +14,7 @@ c     define o valor de pi
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
       g = 9.8d0
-      l = 9.8d0
+      r = 9.8d0
       m = 1.0d0
 
 c     define a constante de amortecimento e a frequencia da forca
@@ -52,7 +52,7 @@ c                 define o tempo atual
 
 c                 incrementa theta e omega se acordo com o metodo
 c                 de euler amortecido
-                  omega = omega - (g/l)*dsin(theta)*deltat - gamma*omega
+                  omega = omega - (g/r)*dsin(theta)*deltat - gamma*omega
      4*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta = theta + omega*deltat
 
