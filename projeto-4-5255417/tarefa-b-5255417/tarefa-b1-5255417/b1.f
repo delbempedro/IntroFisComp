@@ -3,7 +3,7 @@
       implicit real*8(a-h,o-z)
 
 c     define o valor de pi
-      realpi = 4.0d0*datan(1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
@@ -57,8 +57,8 @@ c           define o peiodo como tempo/50, pois ocorrerao 50 oscilacoes
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada
-            if(abs(theta).ge.2.0d0*realpi) then
-                  write(1,*)tempo,mod(theta0,2.0d0*realpi)
+            if(abs(theta).ge.2.0d0*pi) then
+                  write(1,*)tempo,mod(theta0,2.0d0*pi)
             else
                   write(1,*)tempo,theta0
             end if
