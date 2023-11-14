@@ -5,7 +5,7 @@
 
 c     define as amplitudes da forca
       amplitude(1) = 0.5d0
-      amplitude(2) = 1.2d0
+      amplitude(2) = 1.5d0
 
 c     define o valor de pi
       pi = 4.0d0*datan(1.0d0)
@@ -31,7 +31,7 @@ c     solucao analitica
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 400.0d0
+      tempomax = 8000.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -79,23 +79,8 @@ c                 theta inicial
                   n = frequencia*tempo/pi
                   if(abs(tempo-n*pi/frequencia).lt.deltat/2.0d0)then
 
-                        if(abs(theta).ge.2.0d0*pi) then
-                              write(i,*)mod(theta1,2.0d0*pi),omega1
-                        else
-                              write(i,*)theta1,omega1
-                        end if
-
-                        if(abs(theta).ge.2.0d0*pi) then
-                              write(i+2,*)mod(theta2,2.0d0*pi),omega2
-                        else
-                              write(i+2,*)theta2,omega2
-                        end if
-
-                        if(abs(theta).ge.2.0d0*pi) then
-                              write(i+4,*)mod(theta3,2.0d0*pi),omega3
-                        else
-                              write(i+4,*)theta3,omega3
-                        end if
+                        write(i+2,*)theta2,omega2
+                        write(i+4,*)theta3,omega3
 
                   end if
 
