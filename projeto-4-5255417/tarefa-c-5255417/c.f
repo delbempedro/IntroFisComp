@@ -17,7 +17,7 @@ c     referentes ao pendulo
       am = 1.0d0
 
 c     define a constante de amortecimento e a frequencia da forca
-      gamma = 0.05d0
+      gamma = 0.5d0
       frequencia = 2.0d0/3.0d0
 
 c     inicia o valor de theta e omega de acordo com a
@@ -29,7 +29,7 @@ c     solucao analitica
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 200.0d0
+      tempomax = 40.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -62,7 +62,7 @@ c                 de euler amortecido
 
 c                 escreve o theta(tempo), com escala semi-logaritmica,
 c                 atual, no arquivo
-                  write(i,*)tempo,dlog(theta1-theta2)
+                  write(i,*)tempo,dlog(abs(theta1-theta2))
 
             end do
 

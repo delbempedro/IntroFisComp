@@ -17,26 +17,30 @@ c     referentes ao pendulo
       am = 1.0d0
 
 c     define a constante de amortecimento e a frequencia da forca
-      gamma = 0.05d0
+      gamma = 0.5d0
       frequencia = 2.0d0/3.0d0
 
 c     inicia o valor de theta e omega de acordo com a
 c     solucao analitica
-      theta1 = 1.0d0
+      theta1 = 1.0d0*pi/4.0d0
       omega1 = 0.0d0
-      theta2 = 1.001d0
+      theta2 = 1.001d0*pi/4.0d0
       omega2 = 0.0d0
+      theta3 = 0.999d0*pi/4.0d0
+      omega3 = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 80.0d0
+      tempomax = 400.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
       open(unit=1,file="amplitude0.5-1")
       open(unit=3,file="amplitude0.5-2")
+      open(unit=5,file="amplitude0.5-3")
       open(unit=2,file="amplitude1.2-1")
       open(unit=4,file="amplitude1.2-2")
+      open(unit=6,file="amplitude1.2-3")
 
 c     define o loop para cada amplitude
       do i=1,2
@@ -63,13 +67,36 @@ c                 de euler amortecido
      2ega2*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta2 = theta2 + omega2*deltat
 
+c                 incrementa theta3 e omega3 se acordo com o metodo
+c                 de euler amortecido
+                  omega3 = omega3 - (g/r)*dsin(theta3)*deltat - gamma*om
+     2ega3*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  theta3 = theta3 + omega3*deltat
+
 c                 se a frequencia vezes o tempo for um multipli inteiro de pi:
 c                 escreve o omega(theta) atual, no arquivo - para cada
 c                 theta inicial
                   n = frequencia*tempo/pi
                   if(abs(tempo-n*pi/frequencia).lt.deltat/2.0d0)then
-                        write(i,*)theta1,omega1
-                        write(i+2,*)theta2,omega2
+
+                        if(abs(theta).ge.2.0d0*pi) then
+                              write(i,*)mod(theta1,2.0d0*pi),omega1
+                        else
+                              write(i,*)theta1,omega1
+                        end if
+
+                        if(abs(theta).ge.2.0d0*pi) then
+                              write(i+2,*)mod(theta2,2.0d0*pi),omega2
+                        else
+                              write(i+2,*)theta2,omega2
+                        end if
+
+                        if(abs(theta).ge.2.0d0*pi) then
+                              write(i+4,*)mod(theta3,2.0d0*pi),omega3
+                        else
+                              write(i+4,*)theta3,omega3
+                        end if
+
                   end if
 
             end do
@@ -81,5 +108,7 @@ c     fecha os arquivos utilizados
       close(2)
       close(3)
       close(4)
+      close(5)
+      close(6)
 
       end program
