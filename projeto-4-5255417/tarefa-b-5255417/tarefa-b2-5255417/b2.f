@@ -9,7 +9,7 @@ c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
       g = 9.8d0
       r = 9.8d0
-      m = 1.0d0
+      am = 1.0d0
 
 c     defini qual o espacamento de "tempo" entre as
 c     incrementacoes em theta
