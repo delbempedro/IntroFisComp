@@ -3,7 +3,7 @@
       implicit real*8(a-h,o-z)
 
 c     define o valor de pi
-      realpi = 4.0d0*datan(1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
@@ -15,7 +15,7 @@ c     define a constante de amortecimento
       gamma = 0.5d0
 
 c     inicia o valor de theta e omega
-      theta = realpi/6.0d0
+      theta = pi/6.0d0
       omega = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
@@ -40,8 +40,8 @@ c           de euler amortecido
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada
-            if(abs(theta).ge.2.0d0*realpi) then
-                  write(1,*)tempo,mod(theta,2.0d0*realpi)
+            if(abs(theta).ge.2.0d0*pi) then
+                  write(1,*)tempo,mod(theta,2.0d0*pi)
             else
                   write(1,*)tempo,theta
             end if 
