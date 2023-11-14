@@ -8,7 +8,7 @@ c     define as amplitudes da forca
       amplitude(2) = 1.2d0
 
 c     define o valor de pi
-      realpi = 4.0d0*datan(1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo

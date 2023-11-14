@@ -8,7 +8,7 @@ c     define as amplitudes da forca
       amplitude(2) = 1.2d0
 
 c     define o valor de pi
-      realpi = 4.0d0*datan(1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
@@ -66,8 +66,8 @@ c                 de euler amortecido
 c                 se a frequencia vezes o tempo for um multipli inteiro de pi:
 c                 escreve o omega(theta) atual, no arquivo - para cada
 c                 theta inicial
-                  n = frequencia*tempo/realpi
-                  if(abs(tempo-n*realpi/frequencia).lt.deltat/2.0d0)then
+                  n = frequencia*tempo/pi
+                  if(abs(tempo-n*pi/frequencia).lt.deltat/2.0d0)then
                         write(i,*)theta1,omega1
                         write(i+2,*)theta2,omega2
                   end if
