@@ -8,7 +8,7 @@ c     define o valor de pi
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
       g = 9.8d0
-      l = 9.8d0
+      r = 9.8d0
       m = 1.0d0
 
 c     inicia o valor de theta e omega
@@ -40,10 +40,10 @@ c           salva o theta antigo, antes de altera-lo
 
 c           incrementa theta e omega se acordo com o metodo de euler
             theta = theta + omega*deltat
-            omega = omega - (g/l)*thetaant*deltat
+            omega = omega - (g/r)*thetaant*deltat
 
 c           calcula a energia
-            energia = l*m*( ((omega**2)*l)/2.0d0 + g*(1+dcos(theta)) )
+            energia = r*m*( ((omega**2)*r)/2.0d0 + g*(1+dcos(theta)) )
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada
@@ -57,7 +57,7 @@ c           escreve o energia(tempo) atual no arquivo
             write(2,*)tempo,energia
 
 c           escreve o theta(tempo) analiticoatual, no arquivo
-            write(3,*)tempo,thetaanalitico*dcos(dsqrt(g/l)*tempo)
+            write(3,*)tempo,thetaanalitico*dcos(dsqrt(g/r)*tempo)
 
       end do
 

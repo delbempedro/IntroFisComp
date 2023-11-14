@@ -8,7 +8,7 @@ c     define o valor de pi
 c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
       g = 9.8d0
-      l = 9.8d0
+      r = 9.8d0
       m = 1.0d0
 
 c     defini qual o espacamento de "tempo" entre as
@@ -32,8 +32,8 @@ c           (re)inicia o tempo e o pcontrolador
             pcontrolador = 0
 
 c           inicia o loop de oscilacao ate que o pcontrolador
-c           seja igual a 10
-            do while(pcontrolador.lt.10)
+c           seja igual a 100
+            do while(pcontrolador.lt.100)
 
 c                 salva o valor de theta antes de altera-lo
                   omegaant = omega
@@ -42,7 +42,7 @@ c                 define o tempo atual
                   tempo = tempo + deltat
 
 c                 incrementa theta e omega se acordo com o metodo de euler
-                  omega = omega - (g/l)*dsin(theta)*deltat
+                  omega = omega - (g/r)*dsin(theta)*deltat
                   theta = theta + omega*deltat
 
 c                 incrementa um em pcontrolador se a velocidade mudar
@@ -52,8 +52,8 @@ c                 incrementa um em pcontrolador se a velocidade mudar
 
             end do
 
-c           define o peiodo como tempo/5, pois ocorrerao 5 oscilacoes
-            tempo = tempo/5.0d0
+c           define o peiodo como tempo/50, pois ocorrerao 50 oscilacoes
+            tempo = tempo/50.d0
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada
@@ -71,7 +71,7 @@ c           define o valor inicial de h
             hi = h
 
 c           (re)calcula o periodo
-            periodo = 2.0d0*realpi*dsqrt(l/g)*(1+(theta0**2.0d0)/16.0d0)
+            periodo = 2.0d0*realpi*dsqrt(r/g)*(1+(theta0**2.0d0)/16.0d0)
 
             write(2,*)periodo,theta0
 
