@@ -9,7 +9,7 @@ c     define o valores da gravidade, comprimento e massa
 c     referentes ao pendulo
       g = 9.8d0
       r = 9.8d0
-      m = 1.0d0
+      am = 1.0d0
 
 c     defini qual o espacamento de "tempo" entre as
 c     incrementacoes em theta
@@ -20,7 +20,7 @@ c     abre os arquivos onde serao salvas as informacoes
       open(unit=2,file="periodo-analitico")
 
 c     inicia o loop para thetas diferentes
-      do i=1,20
+      do i=1,30
 
 c           inicia o valor de theta e omega
             theta = 0.1d0*i
@@ -64,10 +64,10 @@ c           em modulo, de 2pi - faz a carrecao adequada
             end if
 
 c           define o epson como 10% de theta0
-            epson = theta0*0.1d0
+            epson = theta0*0.000001d0
 
 c           define o valor inicial de h
-            h = (theta0-epson)/2000.0d0
+            h = (theta0-epson)/1000000.0d0
             hi = h
 
 c           (re)inicia o periodo
@@ -76,20 +76,21 @@ c           (re)inicia o periodo
 c           define o do pra somar os valores da integral
             do while(h.le.(theta0-epson))
 
-                  valor = b(h,theta0,hi)
+                  valor = b(h-hi,theta0,hi)
                   periodo = periodo + valor
 
                   h = h + 4*hi
 
             end do
             write(*,*)valor
-c            periodo = 2.0d0*dsqrt(2.0d0*r/g)*(periodo+dsqrt(epson/dsin(t
-c     1heta0)))
+            antperiodo = periodo
+            periodo = 2.0d0*dsqrt(2.0d0*r/g)*(periodo+dsqrt(epson/dsin(t
+     1heta0)))
             periodosemepson = 2.0d0*dsqrt(2.0d0*r/g)*dsqrt(periodo)
             termodoepson = 2.0d0*dsqrt(2.0d0*r/g)*dsqrt(epson/dsin(theta
      10))
-            write(*,*)(tempo-termodoepson)/(2.0d0*dsqrt(2.0d0*r/g))-peri
-     1odo
+            write(*,*)(tempo-termodoepson)/(2.0d0*dsqrt(2.0d0*r/g))-antp
+     1eriodo
             write(*,*)"------------------------------------------------"
             write(2,*)periodo,theta0
 
