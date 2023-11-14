@@ -20,10 +20,10 @@ c     abre os arquivos onde serao salvas as informacoes
       open(unit=2,file="periodo-analitico")
 
 c     inicia o loop para thetas diferentes
-      do i=1,12
+      do i=1,20
 
 c           inicia o valor de theta e omega
-            theta = realpi*i/12.0d0
+            theta = 0.1d0*i
             theta0 = theta
             omega = 0.0d0
 
@@ -35,7 +35,7 @@ c           inicia o loop de oscilacao ate que o pcontrolador
 c           seja igual a 100
             do while(pcontrolador.lt.100)
 
-c                 salva o valor de omega antes de altera-lo
+c                 salva o valor de theta antes de altera-lo
                   omegaant = omega
 
 c                 define o tempo atual
@@ -46,14 +46,14 @@ c                 incrementa theta e omega se acordo com o metodo de euler
                   theta = theta + omega*deltat
 
 c                 incrementa um em pcontrolador se a velocidade mudar
-                  if(omega*omegaant.le.0.0d0)then
+                  if(omega*omegaant.lt.0.0d0)then
                         pcontrolador = pcontrolador + 1
                   end if
 
             end do
 
 c           define o peiodo como tempo/50, pois ocorrerao 50 oscilacoes
-            tempo = tempo/50.0d0
+            tempo = tempo/50.d0
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada
@@ -64,7 +64,7 @@ c           em modulo, de 2pi - faz a carrecao adequada
             end if
 
 c           define o epson
-            epson = 0.1d0
+            epson = 0.08d0
 
 c           define o valor inicial de h
             h = (theta0-epson)/48.0d0
@@ -74,13 +74,14 @@ c           (re)inicia o periodo
             periodo = 0.0d0
 
 c           define o do pra somar os valores da integral
-            do while(h.lt.(theta0-epson))
+            do while(h.le.(theta0-epson))
 
                   periodo = periodo + b(h,theta0,hi)
 
                   h = h + 4*hi
 
             end do
+            write(*,*)h,theta0-epson
             periodo = 2.0d0*dsqrt(2.0d0*r/g)*( periodo + dsqrt(epson)/ds
      1qrt(dsin(theta0)) )
 
