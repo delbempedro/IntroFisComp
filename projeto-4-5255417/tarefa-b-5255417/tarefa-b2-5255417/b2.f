@@ -63,9 +63,6 @@ c           em modulo, de 2pi - faz a carrecao adequada
                   write(1,*)tempo,theta0
             end if
 
-c           define o epson
-            epson = 0.1d0
-
 c           define o valor inicial de h
             h = (theta0-epson)/12.0d0
             hi = h
