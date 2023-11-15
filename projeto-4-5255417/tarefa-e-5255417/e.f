@@ -22,11 +22,11 @@ c     define a constante de amortecimento e a frequencia da forca
 
 c     inicia o valor de theta e omega de acordo com a
 c     solucao analitica
-      theta1 = 1.0d0*pi/4.0d0
+      theta1 = 1.0d0*pi/6.0d0
       omega1 = 0.0d0
-      theta2 = 1.001d0*pi/4.0d0
+      theta2 = 1.001d0*pi/6.0d0
       omega2 = 0.0d0
-      theta3 = 0.999d0*pi/4.0d0
+      theta3 = 0.999d0*pi/6.0d0
       omega3 = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
@@ -60,7 +60,6 @@ c                 de euler amortecido
      1ega1*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta1 = theta1 + omega1*deltat
 
-
 c                 incrementa theta2 e omega2 se acordo com o metodo
 c                 de euler amortecido
                   omega2 = omega2 - (g/r)*dsin(theta2)*deltat - gamma*om
@@ -77,8 +76,9 @@ c                 se a frequencia vezes o tempo for um multipli inteiro de pi:
 c                 escreve o omega(theta) atual, no arquivo - para cada
 c                 theta inicial
                   n = frequencia*tempo/pi
-                  if(abs(tempo-n*pi/frequencia).lt.deltat/2.0d0)then
+                  if(abs(tempo-(n*pi/frequencia)).lt.deltat/2.0d0)then
 
+                        write(i,*)theta1,omega1
                         write(i+2,*)theta2,omega2
                         write(i+4,*)theta3,omega3
 
