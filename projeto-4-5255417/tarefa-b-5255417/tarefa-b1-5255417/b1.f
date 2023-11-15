@@ -63,8 +63,8 @@ c           em modulo, de 2pi - faz a carrecao adequada
                   write(1,*)tempo,theta0
             end if
 
-c           define o epson como 10% de theta0
-            epson = theta0*0.000001d0
+c           define o epson como 1% de theta0
+            epson = theta0*0.01d0
 
 c           define o valor inicial de h
             h = (theta0-epson)/1000000.0d0
@@ -82,16 +82,12 @@ c           define o do pra somar os valores da integral
                   h = h + 4*hi
 
             end do
-            write(*,*)valor
-            antperiodo = periodo
-            periodo = 2.0d0*dsqrt(2.0d0*r/g)*(periodo+dsqrt(epson/dsin(t
-     1heta0)))
-            periodosemepson = 2.0d0*dsqrt(2.0d0*r/g)*dsqrt(periodo)
-            termodoepson = 2.0d0*dsqrt(2.0d0*r/g)*dsqrt(epson/dsin(theta
-     10))
-            write(*,*)(tempo-termodoepson)/(2.0d0*dsqrt(2.0d0*r/g))-antp
-     1eriodo
-            write(*,*)"------------------------------------------------"
+
+c           calcula o periodo
+            periodo = 2.0d0*dsqrt(2.0d0*r/g)*(periodo+2.0d0*dsqrt(epson/
+     1dsin(theta0)))
+
+c           escreve o periodo(theta) no arquivo
             write(2,*)periodo,theta0
 
       end do

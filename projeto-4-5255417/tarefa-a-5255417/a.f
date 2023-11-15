@@ -16,7 +16,7 @@ c     inicia o valor de theta e omega
       omega = 0.0d0
 
 c     inicia o valor de theta analitico
-      thetaanalitico = pi/6.0d0
+      theta0 = pi/6.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega e o tempo inical
@@ -28,6 +28,7 @@ c     abre os arquivos onde serao salvas as informacoes
       open(unit=1,file="euler")
       open(unit=2,file="energia")
       open(unit=3,file="analitico")
+      open(unit=4,file="energia-analitica")
 
 c     inicia o loop de oscilacao
       do while(tempo.lt.tempomax)
@@ -43,7 +44,7 @@ c           incrementa theta e omega se acordo com o metodo de euler
             omega = omega - (g/r)*thetaant*deltat
 
 c           calcula a energia
-            energia = r*am*( ((omega**2)*r)/2.0d0 - g*(1+dcos(theta)) )
+            energia = r*am*( ((omega**2)*r)/2.0d0 + g*(1-dcos(theta)) )
 
 c           escreve o theta(tempo) atual no arquivo e se theta passar,
 c           em modulo, de 2pi - faz a carrecao adequada
@@ -57,12 +58,23 @@ c           escreve o energia(tempo) atual no arquivo
             write(2,*)tempo,energia
 
 c           escreve o theta(tempo) analiticoatual, no arquivo
-            write(3,*)tempo,thetaanalitico*dcos(dsqrt(g/r)*tempo)
+            thetaanalitico = theta0*dcos(dsqrt(g/r)*tempo)
+            write(3,*)tempo,thetaanalitico
+
+c           calcula a energiaanalitica
+            omegaanalitico = -dsqrt(g/r)*theta0*dsin(dsqrt(g/r)*tempo)
+            energiaanalitica = r*am*( ((omegaanalitico**2)*r)/2.0d0 + g*
+     1(1-dcos(thetaanalitico)) )
+
+c           escreve a energiaanalitica(tempo) atual no arquivo
+            write(4,*)tempo,energiaanalitica
 
       end do
 
 c     fecha os arquivos utilizados
       close(1)
       close(2)
+      close(3)
+      close(4)
 
       end program
