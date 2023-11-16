@@ -26,6 +26,8 @@ c     solucao analitica
       omega1 = 0.0d0
       theta2 = 1.001d0
       omega2 = 0.0d0
+      theta3 = 0.999d0
+      omega3 = 0.0d0
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
@@ -35,8 +37,10 @@ c     entre as incrementacoes em theta e omega
 c     abre os arquivos onde serao salvas as informacoes
       open(unit=1,file="amplitude0.5-1")
       open(unit=3,file="amplitude0.5-2")
+      open(unit=5,file="amplitude0.5-3")
       open(unit=2,file="amplitude1.2-1")
       open(unit=4,file="amplitude1.2-2")
+      open(unit=6,file="amplitude1.2-3")
 
 c     define o loop para cada amplitude
       do i=1,2
@@ -63,10 +67,17 @@ c                 de euler amortecido
      2ega2*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta2 = theta2 + omega2*deltat
 
+c                 incrementa theta3 e omega3 se acordo com o metodo
+c                 de euler amortecido
+                  omega3 = omega3 - (g/r)*dsin(theta3)*deltat - gamma*om
+     2ega3*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
+                  theta3 = theta3 + omega2*deltat
+
 c                 escreve o omega(theta) atual, no arquivo - para cada
 c                 theta inicial
                   write(i,*)theta1,omega1
                   write(i+2,*)theta2,omega2
+                  write(i+4,*)theta3,omega3
 
             end do
 
@@ -77,5 +88,7 @@ c     fecha os arquivos utilizados
       close(2)
       close(3)
       close(4)
+      close(5)
+      close(6)
 
       end program
