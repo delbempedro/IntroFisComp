@@ -18,7 +18,7 @@ c     referentes ao pendulo
       am = 1.0d0
 
 c     define a constante de amortecimento e a frequencia da forca
-      gamma = 0.5d0
+      gamma = 0.05d0
       frequencia = 2.0d0/3.0d0
 
 c     inicia o valor de theta e omega
