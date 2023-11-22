@@ -5,7 +5,7 @@
 
 c     define as amplitudes da forca
       amplitude(1) = 0.5d0
-      amplitude(2) = 1.5d0
+      amplitude(2) = 1.2d0
 
 c     define o valor de pi
       pi = 4.0d0*datan(1.0d0)
@@ -72,7 +72,7 @@ c                 de euler amortecido
      2ega3*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta3 = theta3 + omega3*deltat
 
-                  if(mod(pi,tempo*frequencia).gt.deltat/2.0d0) then
+                  if(mod(tempo*frequencia,pi).lt.deltat/2.0d0) then
 
                         write(i,*)mod(theta1,2.0d0*pi),omega1
                         write(i+2,*)mod(theta2,2.0d0*pi),omega2
