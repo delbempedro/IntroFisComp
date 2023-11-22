@@ -31,7 +31,7 @@ c     solucao analitica
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 100000.0d0
+      tempomax = 150.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
@@ -72,11 +72,11 @@ c                 de euler amortecido
      2ega3*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta3 = theta3 + omega3*deltat
 
-                  if(mod(pi,tempo*frequencia).lt.deltat/2.0d0) then
+                  if(mod(pi,tempo*frequencia).gt.deltat/2.0d0) then
 
-                        write(i,*)mod(theta1,pi),omega1
-                        write(i+2,*)mod(theta2,pi),omega2
-                        write(i+4,*)mod(theta3,pi),omega3
+                        write(i,*)mod(theta1,2.0d0*pi),omega1
+                        write(i+2,*)mod(theta2,2.0d0*pi),omega2
+                        write(i+4,*)mod(theta3,2.0d0*pi),omega3
 
                   end if
 
