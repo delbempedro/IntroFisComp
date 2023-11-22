@@ -72,11 +72,11 @@ c                 de euler amortecido
      2ega3*deltat + amplitude(i)*dsin(frequencia*tempo)*deltat
                   theta3 = theta3 + omega3*deltat
 
-                  if(mod(tempo*frequencia,pi).lt.deltat/2.0d0) then
+                  if(mod(pi,tempo*frequencia).lt.deltat/2.0d0) then
 
-                        write(i,*)theta1,omega1
-                        write(i+2,*)theta2,omega2
-                        write(i+4,*)theta3,omega3
+                        write(i,*)mod(theta1,pi),omega1
+                        write(i+2,*)mod(theta2,pi),omega2
+                        write(i+4,*)mod(theta3,pi),omega3
 
                   end if
 
