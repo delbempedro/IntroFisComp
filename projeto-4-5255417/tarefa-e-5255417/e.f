@@ -31,7 +31,7 @@ c     solucao analitica
 
 c     defini o "tempo" de analise, qual o espacamento de "tempo"
 c     entre as incrementacoes em theta e omega
-      tempomax = 150.0d0
+      tempomax = 20000.0d0
       deltat = 0.04d0
 
 c     abre os arquivos onde serao salvas as informacoes
