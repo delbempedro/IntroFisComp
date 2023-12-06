@@ -98,8 +98,9 @@ c     define os semieixos maior e menor
 
 c     calcula a excentricidade
       excentricidade = dsqrt((emaior**2.0d0) - (emenor**2.0d0))/emaior
-      write(*,*)'A excentricidade é:',excentricidade
+      write(*,1)'A excentricidade é: ',excentricidade
 
+1     format(a21,f5.3)
 
 c     fecha o arquivo
       close(1)
