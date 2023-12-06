@@ -47,6 +47,8 @@ c     salva os valores antigos das coordenadas
       xantigo = xi
       yantigo = yi
 
+c     realiza interacoes nas coordenadas ate o
+c     tempo ser igual ao tempo final
       do while(tempo.lt.tempofinal)
 
 c           calcula o raio atual
