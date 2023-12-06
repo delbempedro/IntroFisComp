@@ -145,11 +145,13 @@ c           calcula a excentricidade
             write(*,1)'A excentricidade é: ',excentricidade
 
 c           escreve a relacao periodo**2/raio**3 do planeta no arquivo
-            write(1,*)(tempo**2.0d0)/(raios(i)**3.0d0)
+            razao = (tempo**2.0d0)/(raios(i)**3.0d0)
+            write(1,2)razao
 
       end do
 
 1     format(a21,f5.3)
+2     format(f4.2)
 
 c     fecha o arquivo
       close(1)
