@@ -65,7 +65,12 @@ c           define a velocidade em cada coordenada
             yvelocidade = velocidades(i)
 
 c           define o intervalo de tempo utilizado
-            deltat = 0.0001d0
+c           de acordo com o raio do planeta
+            if(raios(i).gt.30.0d0)then
+                  deltat = 0.001d0
+            else
+                  deltat = 0.01d0
+            end if
 
 c           define o tempo atual
             tempo = 0.0d0
@@ -73,7 +78,7 @@ c           define o tempo atual
 c           escreve no arquivo a coordenada inicial
             write(i,*)xi,yi
 
-c           realiza a interacao inicial em ambas as coorednadas
+c           realiza a interacao inicial em ambas as coordenadas
             xatual = xi + xvelocidade*deltat
             yatual = yi + yvelocidade*deltat
 
@@ -85,8 +90,8 @@ c           (re)inicia o controlador de periodo
             icontrolador = 0
 
 c           realiza interacoes nas coordenadas ate o planeta
-c           cruzar o eixo y duas vezes (um periodo)
-            do while(icontrolador.lt.2)
+c           cruzar o eixo y 20 vezes (10 periodos)
+            do while(icontrolador.lt.20)
 
 c                 calcula o raio atual
                   raio = dsqrt(xatual**2.0d0 + yatual**2.0d0)
