@@ -15,12 +15,12 @@ c     define a resultante da multiplicacao da constante gravitacional
 c     pela massa do sol (ms), pela massa de jupiter (mj = ms/(10**3) )
 c     e pela massa da terra (mt = ms/(3*(10**5)) ) 
       gms = 4.0d0*(pi**2.0d0)
-      gmj = gms/(10**3)
+      gmj = gms/(10**3)*100
       gmt = gms/(3*(10**5))
 
 c     abre os arquivos das coordenadas de cada planeta
-      open(unit=1,file='terra')
-      open(unit=2,file='jupiter')
+      open(unit=1,file='terra-100')
+      open(unit=2,file='jupiter-100')
 
 c     abre o arquivo onde serao salvas as distancias
 c     de onde a terra esta a cada ano
