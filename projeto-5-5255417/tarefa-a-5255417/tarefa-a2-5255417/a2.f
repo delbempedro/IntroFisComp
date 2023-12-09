@@ -64,17 +64,8 @@ c           define a velocidade em cada coordenada
             xvelocidade = 0.0d0
             yvelocidade = velocidades(i)
 
-c           define o intervalo de tempo utilizado de acordo com o raio
-<<<<<<<< HEAD:projeto-5/tarefa-a-5255417/tarefa-a2-5255417/a2.f
+c           define o intervalo de tempo utilizado
             deltat = 0.001d0
-      
-========
-            if(raios(i).lt.10.0d0)then
-                  deltat = 0.0001d0*raios(i)
-            else
-                  deltat = 0.01d0/raios(i)
-            end if
->>>>>>>> parent of 186fe22 (a2 quase pronto):projeto-5/tarefa-a-5255417/a2.f
 
 c           define o tempo atual
             tempo = 0.0d0
@@ -94,14 +85,9 @@ c           (re)inicia o controlador de periodo
             icontrolador = 0
 
 c           realiza interacoes nas coordenadas ate o planeta
-<<<<<<<< HEAD:projeto-5/tarefa-a-5255417/tarefa-a2-5255417/a2.f
 c           cruzar o eixo x duas vezes (10 periodos),
 c           se o planeta não escapar da orbita
             do while((icontrolador.lt.20).and.(raio.lt.50*raios(i)))
-========
-c           cruzar o eixo y duas vezes (um periodo)
-            do while(icontrolador.lt.2)
->>>>>>>> parent of 186fe22 (a2 quase pronto):projeto-5/tarefa-a-5255417/a2.f
 
 c                 calcula o raio atual
                   raio = dsqrt(xatual**2.0d0 + yatual**2.0d0)
@@ -149,18 +135,9 @@ c           define os semieixos maior e menor
                   emaior = ymax
             end if
 
-c           calcula a excentricidade
-            excentricidade = dsqrt(emaior**2.0d0 - emenor**2.0d0)/emaior
-            write(*,1)'A excentricidade é: ',excentricidade
-
 c           escreve a relacao periodo**2/raio**3 do planeta no arquivo
-<<<<<<<< HEAD:projeto-5/tarefa-a-5255417/tarefa-a2-5255417/a2.f
             razao = (tempo**2.0d0)/(emaior**3.0d0)
             write(1,1)razao
-========
-            razao = (tempo**2.0d0)/(raios(i)**3.0d0)
-            write(1,2)razao
->>>>>>>> parent of 186fe22 (a2 quase pronto):projeto-5/tarefa-a-5255417/a2.f
 
       end do
 

@@ -64,17 +64,8 @@ c           define a velocidade em cada coordenada
             xvelocidade = 0.0d0
             yvelocidade = velocidades(i)
 
-<<<<<<<< HEAD:projeto-5/tarefa-a-5255417/tarefa-a1-5255417/a1.f
 c           define o intervalo de tempo utilizado
             deltat = 0.0001d0
-========
-c           define o intervalo de tempo utilizado de acordo com o raio
-            if(raios(i).lt.10.0d0)then
-                  deltat = 0.0001d0*raios(i)
-            else
-                  deltat = 0.01d0/raios(i)
-            end if
->>>>>>>> parent of 186fe22 (a2 quase pronto):projeto-5/tarefa-a-5255417/a1.f
 
 c           define o tempo atual
             tempo = 0.0d0
