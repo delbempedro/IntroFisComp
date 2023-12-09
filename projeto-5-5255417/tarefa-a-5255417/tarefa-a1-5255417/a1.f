@@ -66,11 +66,7 @@ c           define a velocidade em cada coordenada
 
 c           define o intervalo de tempo utilizado
 c           de acordo com o raio do planeta
-            if(raios(i).gt.30.0d0)then
-                  deltat = 0.001d0
-            else
-                  deltat = 0.01d0
-            end if
+            deltat = 0.0001d0*raios(i)
 
 c           define o tempo atual
             tempo = 0.0d0
