@@ -59,7 +59,7 @@ c     coordenadas em ambos os planetas
       x1atual = x1
       y1atual = y1 + vela1*deltat
       x2atual = x2
-      y2tatual = y2 + vela2*deltat
+      y2atual = y2 + vela2*deltat
       x3atual = x3
       y3atual = y3 + vela3*deltat
       xjatual = xj
@@ -80,7 +80,7 @@ c     (re)inicia o controlador de periodo
 
 c     realiza interacoes nas coordenadas ate jupiter
 c     cruzar o eixo x 20 vezes (10 periodos)
-      do while(icontrolador.lt.2)
+      do while(icontrolador.lt.40)
 
 c           calcula o raio atual
             raioa1 = dsqrt(x1atual**2.0d0 + y1atual**2.0d0)
