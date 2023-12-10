@@ -22,7 +22,7 @@ c     define o raio inicial
 
 c     define a velocidade em cada coordenada
       xvelocidade = 0.0d0
-      yvelocidade = 2.0d0*pi*raio
+      yvelocidade = 2.0d0*pi*dsqrt(raio)
 
 c     define o intervalo de tempo utilizado
       deltat = 0.00001d0
@@ -53,9 +53,6 @@ c     tempo ser igual ao tempo final
 
 c           calcula o raio atual
             raio = dsqrt(xatual**2.0d0 + yatual**2.0d0)
-
-c           escreve no arquivo a coordenada atual
-            write(1,*)xatual,yatual
 
 c           escreve no arquivo a coordenada atual
             write(1,*)xatual,yatual
