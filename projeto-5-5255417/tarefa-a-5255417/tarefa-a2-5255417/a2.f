@@ -7,7 +7,10 @@ c     de cada planeta
       dimension raios(11:19),velocidades(11:19)
 
 c     define o valor de pi
-      pi = acos(-1.0d0)
+      pi = 4.0d0*datan(-1.0d0)
+
+c     define o controlador das velocidades
+      vel = 1.5d0
 
 c     preenche os vetores de raio, velocidade e deltat
 c     com o valores correspondentes
@@ -20,15 +23,15 @@ c     com o valores correspondentes
       raios(17) = 19.19d0
       raios(18) = 30.06d0
       raios(19) = 39.53d0
-      velocidades(11) = 2.0d0*pi/dsqrt(raios(11))
-      velocidades(12) = 2.0d0*pi/dsqrt(raios(12))
-      velocidades(13) = 2.0d0*pi/dsqrt(raios(13))
-      velocidades(14) = 2.0d0*pi/dsqrt(raios(14))
-      velocidades(15) = 2.0d0*pi/dsqrt(raios(15))
-      velocidades(16) = 2.0d0*pi/dsqrt(raios(16))
-      velocidades(17) = 2.0d0*pi/dsqrt(raios(17))
-      velocidades(18) = 2.0d0*pi/dsqrt(raios(18))
-      velocidades(19) = 2.0d0*pi/dsqrt(raios(19))
+      velocidades(11) = vel*pi/dsqrt(raios(11))
+      velocidades(12) = vel*pi/dsqrt(raios(12))
+      velocidades(13) = vel*pi/dsqrt(raios(13))
+      velocidades(14) = vel*pi/dsqrt(raios(14))
+      velocidades(15) = vel*pi/dsqrt(raios(15))
+      velocidades(16) = vel*pi/dsqrt(raios(16))
+      velocidades(17) = vel*pi/dsqrt(raios(17))
+      velocidades(18) = vel*pi/dsqrt(raios(18))
+      velocidades(19) = vel*pi/dsqrt(raios(19))
 
 c     define a resultante da multiplicacao da constante gravitacional
 c     pela massa do sol
@@ -65,7 +68,8 @@ c           define a velocidade em cada coordenada
             yvelocidade = velocidades(i)
 
 c           define o intervalo de tempo utilizado
-            deltat = 0.001d0
+c           de acordo com o raio do planeta
+            deltat = 0.0001d0*raios(i)
 
 c           define o tempo atual
             tempo = 0.0d0
