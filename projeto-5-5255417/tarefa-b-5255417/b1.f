@@ -3,7 +3,7 @@
       implicit real*8(a-h,o-z)
 
 c     define o valor de pi
-      pi = acos(-1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     define raio e velocidade da terra e de jupiter
       raioterra = 1.0d0

@@ -7,7 +7,7 @@ c     de cada planeta
       dimension raios(11:19),velocidades(11:19)
 
 c     define o valor de pi
-      pi = 4.0d0*datan(-1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     preenche os vetores de raio e velocidade
 c     com o valores correspondentes
