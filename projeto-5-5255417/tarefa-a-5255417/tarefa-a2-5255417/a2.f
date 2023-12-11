@@ -133,7 +133,7 @@ c                 atualiza as coordenadas maximas
 c                 atualiza o tempo
                   tempo = tempo + deltat
             
-c                 calcula a área da secção da elipse
+c                 calcula a area da seccao da elipse
                   thetaant = datan(yantigo/xantigo)
                   thetanovo = datan(yatual/xatual)
                   area = abs((raio**2.0d0)*(thetanovo - thetaant)/2.0d0)
@@ -159,11 +159,9 @@ c           define os semieixos maior e menor
 
 c           escreve a relacao periodo**2/raio**3 do planeta no arquivo
             razao = ((tempo/10.0d0)**2.0d0)/(emaior**3.0d0)
-            write(1,1)razao
+            write(1,*)razao
 
       end do
-
-1     format(f5.2)
 
 c     fecha o arquivo
       close(1)
@@ -176,5 +174,14 @@ c     fecha o arquivo
       close(17)
       close(18)
       close(19)
+      close(21)
+      close(21)
+      close(22)
+      close(23)
+      close(24)
+      close(25)
+      close(26)
+      close(27)
+      close(28)
 
       end program
