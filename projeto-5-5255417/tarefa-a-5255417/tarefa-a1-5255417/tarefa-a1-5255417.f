@@ -9,6 +9,9 @@ c     de cada planeta
 c     define o valor de pi
       pi = 4.0d0*datan(1.0d0)
 
+c     define o controlador das velocidades
+      vel = 2.0d0
+
 c     preenche os vetores de raio e velocidade
 c     com o valores correspondentes
       raios(11) = 0.39d0
@@ -20,15 +23,15 @@ c     com o valores correspondentes
       raios(17) = 19.19d0
       raios(18) = 30.06d0
       raios(19) = 39.53d0
-      velocidades(11) = 2.0d0*pi/dsqrt(raios(11))
-      velocidades(12) = 2.0d0*pi/dsqrt(raios(12))
-      velocidades(13) = 2.0d0*pi/dsqrt(raios(13))
-      velocidades(14) = 2.0d0*pi/dsqrt(raios(14))
-      velocidades(15) = 2.0d0*pi/dsqrt(raios(15))
-      velocidades(16) = 2.0d0*pi/dsqrt(raios(16))
-      velocidades(17) = 2.0d0*pi/dsqrt(raios(17))
-      velocidades(18) = 2.0d0*pi/dsqrt(raios(18))
-      velocidades(19) = 2.0d0*pi/dsqrt(raios(19))
+      velocidades(11) = vel*pi/dsqrt(raios(11))
+      velocidades(12) = vel*pi/dsqrt(raios(12))
+      velocidades(13) = vel*pi/dsqrt(raios(13))
+      velocidades(14) = vel*pi/dsqrt(raios(14))
+      velocidades(15) = vel*pi/dsqrt(raios(15))
+      velocidades(16) = vel*pi/dsqrt(raios(16))
+      velocidades(17) = vel*pi/dsqrt(raios(17))
+      velocidades(18) = vel*pi/dsqrt(raios(18))
+      velocidades(19) = vel*pi/dsqrt(raios(19))
 
 c     define a resultante da multiplicacao da constante gravitacional
 c     pela massa do sol
@@ -66,7 +69,7 @@ c           define a velocidade em cada coordenada
 
 c           define o intervalo de tempo utilizado
 c           de acordo com o raio do planeta
-            deltat = 0.0001d0*raios(i)
+            deltat = 0.00001d0*dsqrt(raios(i)**3.0d0)
 
 c           define o tempo atual
             tempo = 0.0d0
@@ -143,12 +146,11 @@ c           calcula a excentricidade
 
 c           escreve a relacao periodo**2/raio**3 do planeta no arquivo
             razao = ((tempo/10.0d0)**2.0d0)/(raios(i)**3.0d0)
-            write(1,2)razao
+            write(1,*)razao
 
       end do
 
 1     format(a21,f5.3)
-2     format(f4.2)
 
 c     fecha o arquivo
       close(1)

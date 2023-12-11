@@ -1,0 +1,10 @@
+c                 escreve no arquivo a razão area/(delta tempo) em função do tempo
+c                  if(area/deltat.gt.2.5d0)then
+c                        write(*,*)"Problema:",area,area/deltat
+c                        write(*,*)"Antigo:",yantigo,xantigo
+c                        write(*,*)"Atual:",yatual,xatual
+c                        write(*,*)"thetaant:",thetaant
+c                        write(*,*)"thetanovo:",thetanovo
+c                        write(*,*)"delta theta:",(thetanovo-thetaant)
+c                        write(*,*)"raio:",raio
+c                  end if
