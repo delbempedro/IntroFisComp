@@ -3,7 +3,7 @@
       implicit real*8(a-h,o-z)
 
 c     define o valor de pi
-      pi = acos(-1.0d0)
+      pi = 4.0d0*datan(1.0d0)
 
 c     define raio e velocidade da terra e de jupiter
       raioterra = 1.0d0
@@ -24,7 +24,7 @@ c     abre os arquivos das coordenadas de cada planeta
 
 c     abre o arquivo onde serao salvas as distancias
 c     de onde a terra esta a cada ano
-      open(unit=3,file='distancia')
+      open(unit=3,file='distancia-100')
 
 c     define as coordenadas iniciais da terra e de jupiter
       xt = raioterra
@@ -64,8 +64,8 @@ c     (re)inicia o controlador de periodo
       icontrolador = 0
 
 c     realiza interacoes nas coordenadas ate jupiter
-c     cruzar o eixo x 20 vezes (10 periodos)
-      do while(icontrolador.lt.20)
+c     cruzar o eixo x 40 vezes (10 periodos)
+      do while(icontrolador.lt.40)
 
 c           calcula o raio atual
             raioterrasol = dsqrt(xtatual**2.0d0 + ytatual**2.0d0)
@@ -104,43 +104,42 @@ c           atualiza os valores das coordenadas
             xjatual = xjproximo
             yjatual = yjproximo
 
-c           salva a posicao da terra a casa um ano e
-c           calcula a variacao desta posicao a cada ano
-            if(mod(icontrolador,2).eq.0)then
-                  
-c                 calcula a distancia entre a posição de dois anos consecutivos
-                  if(icontrolador.eq.2)then
-                        xant = xt
-                        yant = yt
-                        xatual = xtproximo
-                        yatual = ytproximo
-                        
-                        distancia = dsqrt((xant-xatual)**2.0d0 + (yant -
-     1 yatual)**2.0d0)
-                  else
-                        xprox = xtatual
-                        yprox = ytatual
-                        xant = xatual
-                        yant = yatual
-                        xatual = xprox
-                        yatual = yprox
-
-                        distancia = dsqrt((xant-xatual)**2.0d0 + (yant -
-     1 yatual)**2.0d0)
-
-                  end if
-
-                  write(3,*)distancia
-
-            end if
-
 c           atualiza o tempo
             tempo = tempo + deltat
 
 c           verifica se o planeta cruzou o eixo x
 c           incrementando o controlador em caso verdadeiro
-            if((yjproximo*yjantigo).le.0.0d0)then
+            if((ytproximo*ytantigo).le.0.0d0)then
+
                   icontrolador = icontrolador + 1
+
+c                 calcula a distancia entre a posição de dois anos consecutivos
+                  if(mod(icontrolador,2).eq.0)then
+                        if(icontrolador.eq.2)then
+                              xant = xt
+                              yant = yt
+                              xatual = xtproximo
+                              yatual = ytproximo
+                              
+                              distancia = dsqrt((xant-xatual)**2.0d0 + (
+     1yant - yatual)**2.0d0)
+                        else
+                              xprox = xtatual
+                              yprox = ytatual
+                              xant = xatual
+                              yant = yatual
+                              xatual = xprox
+                              yatual = yprox
+
+                              distancia = dsqrt((xant-xatual)**2.0d0 + (
+     1yant - yatual)**2.0d0)
+
+                        end if
+
+                        write(3,*)distancia
+
+                  end if
+
             end if
 
       end do
