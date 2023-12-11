@@ -10,7 +10,7 @@ c     define o valor de pi
       pi = 4.0d0*datan(1.0d0)
 
 c     define o controlador das velocidades
-      vel = 1.5d0
+      vel = 2.3d0
 
 c     preenche os vetores de raio, velocidade e deltat
 c     com o valores correspondentes
@@ -39,6 +39,7 @@ c     pela massa do sol
 
 c     abre os arquivos das coordenadas de cada planeta
       open(unit=1,file='tabela')
+      open(unit=2,file='area')
       open(unit=11,file='mercurio')
       open(unit=12,file='venus')
       open(unit=13,file='terra')
@@ -50,7 +51,7 @@ c     abre os arquivos das coordenadas de cada planeta
       open(unit=19,file='plutao')
 
 c     inicia o loop para cada planeta
-      do i=11,19
+      do i=11,11
 
 c           define as coordenadas iniciais
             xi = raios(i)
@@ -69,13 +70,15 @@ c           define a velocidade em cada coordenada
 
 c           define o intervalo de tempo utilizado
 c           de acordo com o raio do planeta
-            deltat = 0.0001d0*raios(i)
+            deltat = 0.00001d0*dsqrt(raios(i)**3.0d0)
 
 c           define o tempo atual
             tempo = 0.0d0
 
 c           escreve no arquivo a coordenada inicial
+            if(area.gt.deltat)then
             write(i,*)xi,yi
+            end if
 
 c           realiza a interacao inicial em ambas as coorednadas
             xatual = xi + xvelocidade*deltat
@@ -91,7 +94,7 @@ c           (re)inicia o controlador de periodo
 c           realiza interacoes nas coordenadas ate o planeta
 c           cruzar o eixo x duas vezes (10 periodos),
 c           se o planeta não escapar da orbita
-            do while((icontrolador.lt.20).and.(raio.lt.50*raios(i)))
+            do while((icontrolador.lt.2).and.(raio.lt.50*raios(i)))
 
 c                 calcula o raio atual
                   raio = dsqrt(xatual**2.0d0 + yatual**2.0d0)
@@ -123,6 +126,14 @@ c                 atualiza as coordenadas maximas
 
 c                 atualiza o tempo
                   tempo = tempo + deltat
+            
+c                 calcula a área da secção da elipse
+                  thetaant = datan(yantigo/xantigo)
+                  thetanovo = datan(yatual/xatual)
+                  area = abs((raio**2.0d0)*(thetanovo - thetaant)/2.0d0)
+
+c                 escreve no arquivo a razão area/(delta tempo) em função do tempo
+                  write(2,*)tempo,area/deltat
 
 c                 verifica se o planeta cruzou o eixo x
 c                 incrementando o controlador em caso verdadeiro
@@ -140,13 +151,12 @@ c           define os semieixos maior e menor
             end if
 
 c           escreve a relacao periodo**2/raio**3 do planeta no arquivo
-            razao = (tempo**2.0d0)/(emaior**3.0d0)
+            razao = ((tempo/10.0d0)**2.0d0)/(emaior**3.0d0)
             write(1,1)razao
 
       end do
 
-1     format(a21,f5.3)
-2     format(f4.2)
+1     format(f5.2)
 
 c     fecha o arquivo
       close(1)
