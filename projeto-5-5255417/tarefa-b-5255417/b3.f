@@ -3,7 +3,7 @@
       implicit real*8(a-h,o-z)
 
 c     define o valor de pi
-      pi = acos(-1.0d0)
+      pi = 4.0d0*atan(1.0d0)
 
 c     define raio e velocidade de jupiter e dos asteroides
       raiojupiter = 5.2d0
@@ -80,18 +80,18 @@ c     (re)inicia o controlador de periodo
 
 c     realiza interacoes nas coordenadas ate jupiter
 c     cruzar o eixo x 20 vezes (10 periodos)
-      do while(icontrolador.lt.40)
+      do while(icontrolador.lt.20)
 
 c           calcula o raio atual
             raioa1 = dsqrt(x1atual**2.0d0 + y1atual**2.0d0)
-            raioa1jupiter = dsqrt((x1-xjatual)**2.0d0 + (y1-yjatual)**2.
-     10d0)
+            raioa1jupiter = dsqrt((x1atual-xjatual)**2.0d0 + (y1atual-yj
+     1atual)**2.0d0)
             raioa2 = dsqrt(x2atual**2.0d0 + y2atual**2.0d0)
-            raioa2jupiter = dsqrt((x2-xjatual)**2.0d0 + (y2-yjatual)**2.
-     10d0)
+            raioa2jupiter = dsqrt((x2atual-xjatual)**2.0d0 + (y2atual-yj
+     1atual)**2.0d0)
             raioa3 = dsqrt(x3atual**2.0d0 + y3atual**2.0d0)
-            raioa3jupiter = dsqrt((x3-xjatual)**2.0d0 + (y3-yjatual)**2.
-     10d0)
+            raioa3jupiter = dsqrt((x3atual-xjatual)**2.0d0 + (y3atual-yj
+     1atual)**2.0d0)
             raiojupitersol = dsqrt(xjatual**2.0d0 + yjatual**2.0d0) 
 
 c           escreve no arquivo a coordenada atual de cada planeta
